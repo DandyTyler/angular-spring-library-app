@@ -4,8 +4,8 @@ import 'rxjs/add/operator/take';
 
 import {GenreService} from "../../services/genre.service";
 import {BookService} from "../../services/book.service";
-import {Book} from "../../book";
-import {Genre} from "../../genre";
+import {Book} from "../../models/book";
+import {Genre} from "../../models/genre";
 
 @Component({
   selector: 'app-book-form',
@@ -22,7 +22,7 @@ export class BookFormComponent implements OnInit {
               private route: ActivatedRoute,
               private genreService: GenreService,
               private bookService: BookService) {
-    genreService.getGenres().subscribe(genres => this.genres = genres);
+    genreService.getAll().subscribe(genres => this.genres = genres);
 
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) this.bookService.get(this.id).take(1).subscribe(b => this.book = b);
@@ -36,6 +36,12 @@ export class BookFormComponent implements OnInit {
       this.bookService.create(book).subscribe(newBook => console.log(newBook));
     }
     this.router.navigate(['/admin/books']);
+  }
+
+  delete() {
+    if (!confirm('Are you sure you want to delete this book?')) return;
+
+    this.bookService.delete(this.id).subscribe(()=>this.router.navigate(['/admin/books']));
   }
 
   ngOnInit() {

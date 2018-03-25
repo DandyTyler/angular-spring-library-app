@@ -1,3 +1,17 @@
-<p>
-  books works!
-</p>
+<div class="row">
+  <div class="col-2">
+    <book-filter [genreId]="genreId"></book-filter>
+  </div>
+  <div class="col">
+    <div class="row">
+      <ng-container *ngFor="let b of filteredBooks; let i = index">
+        <div class="col">
+        <book-card [book]="b"></book-card>
+        </div>
+        <div *ngIf="(i+1)% 2===0" class="w-100"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+

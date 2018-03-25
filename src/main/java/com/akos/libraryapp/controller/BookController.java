@@ -34,13 +34,18 @@ public class BookController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public BookDTO addBook(@RequestBody BookDTO bookDTO){
+    public BookDTO addBook(@RequestBody BookDTO bookDTO) {
         return bookService.createBook(bookDTO);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public BookDTO getBook(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
-        
+
         return bookService.updateBook(id, bookDTO);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteBook(@PathVariable Long id) {
+        bookService.deleteBook(id);
     }
 }

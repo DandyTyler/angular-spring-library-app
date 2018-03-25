@@ -55,18 +55,12 @@
         </div>
       </div>
       <button class="btn btn-primary">Save</button>
+      <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
     </form>
   </div>
 
   <div class="col-md-6 bookCard">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" [src]="imageURL.value" *ngIf="book.imageURL">
-      <div class="card-body">
-        <h5 class="card-title" *ngIf="book.name">{{book.name}}</h5>
-        <p class="card-text" *ngIf="book.genre">Genre: {{book.genre.name}}</p>
-        <p class="card-text" *ngIf="book.publishYear">Publication year: {{book.publishYear}}</p>
-      </div>
-    </div>
+   <book-card [book]="book" [show-actions] ="false"></book-card>
 </div>
 </div>
 

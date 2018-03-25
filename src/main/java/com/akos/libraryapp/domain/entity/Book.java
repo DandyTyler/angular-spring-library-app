@@ -19,14 +19,23 @@ public class Book implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH,
+            CascadeType.DETACH,
+    })
     @JoinTable(name = "BOOK_AUTHOR_DETAIL",
             joinColumns = @JoinColumn(name = "BOOK_ID", foreignKey = @ForeignKey(name = "FK_BOOK")),
             inverseJoinColumns = @JoinColumn(name = "AUTHOR_ID", foreignKey = @ForeignKey(name = "FK_AUTHOR")))
     @JsonIgnoreProperties("books")
     private Set<Author> authors = new HashSet<>();;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade =  {
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH,
+    }, fetch = FetchType.EAGER)
     @JoinColumn(name = "GENRE_ID", foreignKey = @ForeignKey(name = "FK_GENRE"))
     @JsonIgnoreProperties("books")
     private Genre genre;

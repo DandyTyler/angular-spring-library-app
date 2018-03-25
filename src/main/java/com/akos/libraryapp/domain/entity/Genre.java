@@ -19,7 +19,7 @@ public class Genre implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "genre", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<Book>();
 
     public Genre() {

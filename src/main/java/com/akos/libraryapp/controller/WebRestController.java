@@ -37,17 +37,37 @@ public class WebRestController {
         steev.setBirthday(new Date(calendar.getTime().getTime()));
 
         Author robert = new Author();
-        robert.setFullName("R.A.Salvatore");
+        robert.setFullName("R.A. Salvatore");
         robert.setBirthday(new Date(calendar.getTime().getTime()));
 
         Author howard = new Author();
-        howard.setFullName("H.P.Lovecraft ");
+        howard.setFullName("H.P. Lovecraft ");
         calendar.set(1890, Calendar.MARCH, 20);
         howard.setBirthday(new Date(calendar.getTime().getTime()));
+
+        Author frank = new Author();
+        frank.setFullName("Frank Herbert");
+        calendar.set(1986, Calendar.OCTOBER, 8);
+        frank.setBirthday(new Date(calendar.getTime().getTime()));
+
+        Author george  = new Author();
+        george.setFullName("George Orwell");
+        calendar.set(1903, Calendar.JUNE, 25);
+        george.setBirthday(new Date(calendar.getTime().getTime()));
+
+        Author doug = new Author();
+        doug.setFullName("Douglas Adams");
+        calendar.set(1952, Calendar.MARCH, 11);
+        doug.setBirthday(new Date(calendar.getTime().getTime()));
+
 
         Genre horror = new Genre("Horror");
 
         Genre fantasy = new Genre("Fantasy");
+
+        Genre sciFi = new Genre("Sci-fi");
+
+        Genre comedy = new Genre("Comedy");
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Book book1 = new Book("It");
@@ -69,12 +89,14 @@ public class WebRestController {
         book3.getAuthors().add(robert);
         book3.setGenre(fantasy);
         book3.setPublishYear(1988);
+        book3.setImageURL("https://s-media-cache-ak0.pinimg.com/originals/ac/f9/56/acf95607f3684997f9ef1f4fac7d3326.jpg");
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Book book4 = new Book("Sea of Swords");
         book4.getAuthors().add(robert);
         book4.setGenre(fantasy);
         book4.setPublishYear(2001);
+        book4.setImageURL("https://vignette.wikia.nocookie.net/forgottenrealms/images/b/be/Sea_of_Swords.jpg/revision/latest?cb=20070219001247");
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Book book5 = new Book("The Dream-Quest of Unknown Kadath");
@@ -84,12 +106,34 @@ public class WebRestController {
         book5.setImageURL("https://upload.wikimedia.org/wikipedia/en/5/55/The-Dream-Quest-of-Unknown-Kadath.jpg");
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        Book book6 = new Book("Dune");
+        book6.getAuthors().add(frank);
+        book6.setGenre(sciFi);
+        book6.setPublishYear(1963);
+        book6.setImageURL("https://i.pinimg.com/originals/1e/6f/6f/1e6f6fdedbdd9ab1ed3dc1a107a1b87e.jpg");
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        Book book7 = new Book("1984");
+        book7.getAuthors().add(george);
+        book7.setGenre(sciFi);
+        book7.setPublishYear(1949);
+        book7.setImageURL("https://s-media-cache-ak0.pinimg.com/originals/6f/cf/76/6fcf76874ffe4ba02a7c23fac931d17c.jpg");
+
+        Book book8 = new Book("The Hitchhiker's Guide to the Galaxy");
+        book8.getAuthors().add(doug);
+        book8.setGenre(comedy);
+        book8.setPublishYear(1979);
+        book8.setImageURL("https://vignette.wikia.nocookie.net/hitchhikers/images/1/11/The_Hitchhiker%27s_Guide_to_the_Galaxy.jpg/revision/latest?cb=20140520174710");
+
 
         bookService.save(book1);
         bookService.save(book2);
         bookService.save(book3);
         bookService.save(book4);
         bookService.save(book5);
+        bookService.save(book6);
+        bookService.save(book7);
+        bookService.save(book8);
 
         log.info("All books:");
         log.info("-------------------------------");

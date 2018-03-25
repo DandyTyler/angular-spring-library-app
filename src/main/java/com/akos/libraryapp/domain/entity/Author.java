@@ -25,10 +25,7 @@ public class Author implements Serializable {
     private Date birthday;
 
     @JsonIgnoreProperties("authors")
-    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER, cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<>();
 
     public Author() {

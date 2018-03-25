@@ -124,4 +124,8 @@ public class BookService {
 
         return bookDTO;
     }
+
+    public void deleteBook(Long id){
+        bookRepository.deleteById(id);
+    }
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Book} from "../book";
+import {Book} from "../models/book";
 import {Observable} from "rxjs/Observable";
-import {Genre} from "../genre";
+import {Genre} from "../models/genre";
 
 @Injectable()
 export class BookService {
@@ -25,6 +25,10 @@ export class BookService {
 
   update(bookId, book) : Observable<Book>{
     return this.http.post<Book>(this.url+ '/'+bookId, book)
+  }
+
+  delete(bookId){
+    return this.http.delete(this.url+'/'+bookId);
   }
 
 }

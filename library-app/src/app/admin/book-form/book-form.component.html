@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="name">Title:</label>
+        <input #title="ngModel" [(ngModel)]="book.name" name="name" id="name" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+          Title is required.
+        </div>
+      </div>
+
+      <!--<div class="form-group">-->
+        <!--<label for="authors">Authors: (Not implemented yet)</label>-->
+        <!--<input #authors="ngModel" ngModel name="authors" id="authors" type="text" class="form-control">-->
+        <!--<button class="btn btn-primary" disabled>Add new author</button>-->
+      <!--</div>-->
+
+      <!----------------------------------------Just mock-------------------------------------------------------------->
+      <label for="authors">Authors: (Not implemented yet)</label>
+      <input  name="authors" id="authors" type="text" class="form-control">
+      <button class="btn btn-primary" disabled>Add new author</button>
+      <!--------------------------------------------------------------------------------------------------------------->
+
+      <div class="form-group">
+        <label for="publishYear">Publication year:</label>
+        <input #publishYear="ngModel" [(ngModel)]="book.publishYear" name="publishYear" id="publishYear" type="text" class="form-control" required [min]="1800">
+        <div class="alert alert-danger" *ngIf="publishYear.touched && publishYear.invalid">
+          <div *ngIf="publishYear.errors.required">Publication year is required.</div>
+          <div *ngIf="publishYear.errors.min">Publication year should be 1800 or higher.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="genre">Genre:</label>
+        <select #genre="ngModel" [(ngModel)] = "book.genre"  name="genre" id="genre" class="form-control" required>
+          <option value=""></option>
+          <option *ngFor="let genre of genres" [ngValue]="genre">{{genre.name}}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="genre.touched && genre.invalid">
+          Genre is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea #description [(ngModel)]="book.description" name="description" id="description" class="form-control" rows="5"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="imageURL">Image URL:</label>
+        <input #imageURL="ngModel" [(ngModel)]="book.imageURL" name="imageURL" id="imageURL" type="text" class="form-control" required url>
+        <div class="alert alert-danger" *ngIf="imageURL.touched && imageURL.invalid">
+          <div *ngIf="imageURL.errors.required"> Image URL is required.</div>
+          <div *ngIf="imageURL.errors.url"> It's not a valid URL.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary">Save</button>
+    </form>
+  </div>
+
+  <div class="col-md-6 bookCard">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="imageURL.value" *ngIf="book.imageURL">
+      <div class="card-body">
+        <h5 class="card-title" *ngIf="book.name">{{book.name}}</h5>
+        <p class="card-text" *ngIf="book.genre">Genre: {{book.genre.name}}</p>
+        <p class="card-text" *ngIf="book.publishYear">Publication year: {{book.publishYear}}</p>
+      </div>
+    </div>
+</div>
+</div>
+
+

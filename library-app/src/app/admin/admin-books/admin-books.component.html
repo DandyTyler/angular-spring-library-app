@@ -1,0 +1,26 @@
+<p>
+  <a routerLink="/admin/books/new" class="btn btn-primary">New book</a>
+</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Authors</th>
+    <th>Publication year</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tr *ngFor="let b of books$ | async">
+    <td>{{b.name}}</td>
+    <td>
+      <div *ngFor="let a of b.authors">
+        {{a.fullName}}
+      </div>
+    </td>
+    <td>{{b.publishYear}}</td>
+    <td>
+      <a [routerLink]="['/admin/books/',b.id]">Edit</a>
+    </td>
+  </tr>
+  <tbody></tbody>
+</table>

@@ -24,8 +24,15 @@ public class Author implements Serializable {
     @Column(name = "BIRTHDAY")
     private Date birthday;
 
+    @Column(name = "PHOTO_URL")
+    private String photoURL;
+
+    @Lob
+    @Column(name = "BIOGRAPHY")
+    private String biography;
+
     @JsonIgnoreProperties("authors")
-    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "authors", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<>();
 
     public Author() {
@@ -53,6 +60,22 @@ public class Author implements Serializable {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
     }
 
     public Set<Book> getBooks() {

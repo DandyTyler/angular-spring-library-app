@@ -1,5 +1,5 @@
 <p>
-  <a routerLink="/admin/books/new" class="btn btn-primary">New book</a>
+  <a routerLink="/admin/authors/new" class="btn btn-primary">Add new author</a>
 </p>
 <p>
   <input
@@ -14,33 +14,38 @@
   (reload)="reloadItems($event)"
 >
   <data-table-column
-    [property]="'name'"
+    [property]="'fullName'"
     [header]="'Name'"
-    [sortable]="true"
-    [resizable]="true"
-  ></data-table-column>
-
-  <data-table-column
-    [property]="'authors'"
-    [header]="'Authors'"
     [sortable]="true"
     [resizable]="true"
   >
     <ng-template #dataTableCell let-item="item">
-      <div *ngFor="let a of item.authors">
-        <a [routerLink]="['/authors/',a.id]"> {{a.fullName}}</a>
-      </div>
+      <a [routerLink]="['/authors/',item.id]">{{item.fullName}}</a>
     </ng-template>
   </data-table-column>
 
   <data-table-column
-    [property]="'publishYear'"
-    [header]="'Publication year'"
+    [property]="'birthday'"
+    [header]="'Birthday'"
     [sortable]="true"
     [resizable]="true"
   >
     <ng-template #dataTableCell let-item="item">
-      {{item.publishYear}}
+      {{item.birthday | date : 'mediumDate'}}
+    </ng-template>
+  </data-table-column>
+
+
+  <data-table-column
+    [property]="'books'"
+    [header]="'Books'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+    <ng-template #dataTableCell let-item="item">
+      <div *ngFor="let b of item.books">
+        {{b.name}}
+      </div>
     </ng-template>
   </data-table-column>
 
@@ -48,8 +53,8 @@
     [property]="'id'"
   >
     <ng-template #dataTableCell let-item="item">
-      <a [routerLink]="['/admin/books/',item.id]">Edit</a>
+      <a [routerLink]="['/admin/authors/',item.id]">Edit</a>
     </ng-template>
   </data-table-column>
-</data-table>
 
+</data-table>

@@ -18,6 +18,10 @@ import {GenreService} from "./services/genre.service";
 import {BookService} from "./services/book.service";
 import { BookFilterComponent } from './books/book-filter/book-filter.component';
 import { BookCardComponent } from './book-card/book-card.component';
+import {AuthorService} from "./services/author.service";
+import { AuthorDetailsComponent } from './author-details/author-details.component';
+import { AuthorFormComponent } from './admin/author-form/author-form.component';
+import { AdminAuthorsComponent } from './admin/admin-authors/admin-authors.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,9 @@ import { BookCardComponent } from './book-card/book-card.component';
     BookFormComponent,
     BookFilterComponent,
     BookCardComponent,
+    AuthorDetailsComponent,
+    AuthorFormComponent,
+    AdminAuthorsComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +49,10 @@ import { BookCardComponent } from './book-card/book-card.component';
       {path: '', component: BooksComponent},
       {path: 'books', component: BooksComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'authors/:id', component: AuthorDetailsComponent},
+      {path: 'admin/authors/new', component: AuthorFormComponent},
+      {path: 'admin/authors/:id', component: AuthorFormComponent},
+      {path: 'admin/authors', component: AdminAuthorsComponent},
       {path: 'admin/books/new', component: BookFormComponent},
       {path: 'admin/books/:id', component: BookFormComponent},
       {path: 'admin/books', component: AdminBooksComponent}
@@ -49,7 +60,8 @@ import { BookCardComponent } from './book-card/book-card.component';
   ],
   providers: [
     GenreService,
-    BookService
+    BookService,
+    AuthorService
   ],
   bootstrap: [AppComponent]
 })

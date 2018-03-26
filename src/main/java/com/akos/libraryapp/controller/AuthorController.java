@@ -39,6 +39,11 @@ public class AuthorController {
         return repository.save(author);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public Author updateBook(@PathVariable Long id, @RequestBody Author author) {
+        return repository.save(author);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteAuthor(@PathVariable Long id){
          repository.deleteById(id);

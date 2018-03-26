@@ -6,6 +6,7 @@ import com.akos.libraryapp.domain.dto.GenreDTO;
 import com.akos.libraryapp.domain.entity.Author;
 import com.akos.libraryapp.domain.entity.Book;
 import com.akos.libraryapp.domain.entity.Genre;
+import com.akos.libraryapp.repositories.AuthorRepository;
 import com.akos.libraryapp.repositories.BookRepository;
 import com.akos.libraryapp.repositories.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,13 @@ public class BookService {
 
     private GenreRepository genreRepository;
 
+    private AuthorRepository authorRepository;
+
     @Autowired
-    public BookService(BookRepository bookRepository, GenreRepository genreRepository) {
+    public BookService(BookRepository bookRepository, GenreRepository genreRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.genreRepository = genreRepository;
+        this.authorRepository = authorRepository;
     }
 
     public List<Book> getAllBooks() {
@@ -63,6 +67,13 @@ public class BookService {
 
         newBook.setDescription(bookDTO.getDescription());
 
+        for (AuthorDTO authorDTO: bookDTO.getAuthors()) {
+
+            Author author = authorRepository.getOne(authorDTO.getId());
+
+            newBook.getAuthors().add(author);
+        }
+
         bookDTO.setId(bookRepository.save(newBook).getId());
 
         return bookDTO;
@@ -90,6 +101,7 @@ public class BookService {
 
             for (Author author : book.getAuthors()) {
                 AuthorDTO authorDTO = new AuthorDTO();
+                authorDTO.setId(author.getId());
                 authorDTO.setBirthday(author.getBirthday());
                 authorDTO.setFullName(author.getFullName());
 

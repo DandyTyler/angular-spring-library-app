@@ -39,7 +39,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public BookDTO getBook(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
+    public BookDTO updateBook(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
 
         return bookService.updateBook(id, bookDTO);
     }

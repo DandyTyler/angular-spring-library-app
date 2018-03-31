@@ -3,7 +3,7 @@ import {FormsModule } from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CustomFormsModule} from "ng2-validation";
 import {DataTableModule} from "angular5-data-table";
 
@@ -22,6 +22,10 @@ import {AuthorService} from "./services/author.service";
 import { AuthorDetailsComponent } from './author-details/author-details.component';
 import { AuthorFormComponent } from './admin/author-form/author-form.component';
 import { AdminAuthorsComponent } from './admin/admin-authors/admin-authors.component';
+import {AuthService} from "./services/auth.service";
+import {AuthGuard} from "./services/auth-guard.service";
+import {TokenInterceptor} from "./services/token.interceptor";
+import {AdminAuthGuard} from "./services/admin-auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -50,18 +54,26 @@ import { AdminAuthorsComponent } from './admin/admin-authors/admin-authors.compo
       {path: 'books', component: BooksComponent},
       {path: 'login', component: LoginComponent},
       {path: 'authors/:id', component: AuthorDetailsComponent},
-      {path: 'admin/authors/new', component: AuthorFormComponent},
-      {path: 'admin/authors/:id', component: AuthorFormComponent},
-      {path: 'admin/authors', component: AdminAuthorsComponent},
-      {path: 'admin/books/new', component: BookFormComponent},
-      {path: 'admin/books/:id', component: BookFormComponent},
-      {path: 'admin/books', component: AdminBooksComponent}
+      {path: 'admin/authors/new', component: AuthorFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/authors/:id', component: AuthorFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/authors', component: AdminAuthorsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/books/:id', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuard]}
     ])
   ],
   providers: [
     GenreService,
     BookService,
-    AuthorService
+    AuthorService,
+    AuthService,
+    AuthGuard,
+    AdminAuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

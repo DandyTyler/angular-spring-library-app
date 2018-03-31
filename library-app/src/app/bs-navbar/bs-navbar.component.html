@@ -10,19 +10,19 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/books">Books</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!authService.isAuthenticated()">
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
-      <li ngbDropdown class="nav-item dropdown">
+      <li ngbDropdown class="nav-item dropdown" *ngIf="authService.isAuthenticated()">
         <a
           ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">Username
+          aria-haspopup="true" aria-expanded="false">{{authService.getCurrentUser().sub}}
         </a>
 
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" routerLink="/admin/books">Manage books</a>
-          <a class="dropdown-item" routerLink="/admin/authors">Manage authors</a>
-          <a class="dropdown-item" (click)="logout()">Log Out</a>
+          <a class="dropdown-item" routerLink="/admin/books" *ngIf="authService.getCurrentUser().isAdmin">Manage books</a>
+          <a class="dropdown-item" routerLink="/admin/authors" *ngIf="authService.getCurrentUser().isAdmin">Manage authors</a>
+          <a class="dropdown-item"  (click)="logout()">Log Out</a>
         </div>
       </li>
     </ul>

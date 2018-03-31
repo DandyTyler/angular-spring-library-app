@@ -16,6 +16,3 @@ mvn clean install
 mvn spring-boot:run
 ```
 to run project at http://localhost:8080/
-
-Use the H2Data.sql to fill the database
-or send GET request to http://localhost:8080/api/hi

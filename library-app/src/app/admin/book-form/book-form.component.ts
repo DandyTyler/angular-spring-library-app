@@ -35,6 +35,7 @@ export class BookFormComponent implements OnInit {
   }
 
   save(book: Book) {
+    console.log(this.book);
     if (this.id)
       this.bookService.update(this.id, this.book).subscribe(updatedBook => console.log(updatedBook));
     else {

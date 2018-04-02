@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GenreService} from "../../services/genre.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'book-filter',
@@ -10,10 +11,13 @@ export class BookFilterComponent implements OnInit {
 
   genres$;
 
+  params: Params;
+
   @Input('genreId') genreId;
 
-  constructor(genreService: GenreService) {
+  constructor( route: ActivatedRoute,genreService: GenreService) {
     this.genres$ = genreService.getAll();
+    this.params = route.snapshot.params;
   }
 
   ngOnInit() {

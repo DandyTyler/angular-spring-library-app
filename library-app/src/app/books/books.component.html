@@ -3,6 +3,9 @@
     <book-filter [genreId]="genreId"></book-filter>
   </div>
   <div class="col">
+    <p>
+      <input #query (keyup)="filterByQuery(query.value)" type="text" class="form-control" placeholder="Search...">
+    </p>
     <div class="row">
       <ng-container *ngFor="let b of filteredBooks; let i = index">
         <div class="col">

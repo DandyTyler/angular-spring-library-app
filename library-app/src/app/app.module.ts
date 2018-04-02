@@ -8,7 +8,7 @@ import {CustomFormsModule} from "ng2-validation";
 import {DataTableModule} from "angular5-data-table";
 
 import {AppComponent} from './app.component';
-import {BsNavbarComponent} from './bs-navbar/bs-navbar.component';
+import {BsNavbarComponent} from './navbar/navbar.component';
 import {HomeComponent} from './home/home.component';
 import {BooksComponent} from './books/books.component';
 import {AdminBooksComponent} from './admin/admin-books/admin-books.component';
@@ -26,6 +26,7 @@ import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./services/auth-guard.service";
 import {TokenInterceptor} from "./services/token.interceptor";
 import {AdminAuthGuard} from "./services/admin-auth-guard.service";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {AdminAuthGuard} from "./services/admin-auth-guard.service";
     CustomFormsModule,
     DataTableModule,
     HttpClientModule,
+    NgSelectModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {path: '', component: BooksComponent},

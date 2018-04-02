@@ -5,24 +5,34 @@
         <label for="name">Title:</label>
         <input #title="ngModel" [(ngModel)]="book.name" name="name" id="name" type="text" class="form-control" required>
         <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-          Title is required.
+          <div *ngIf="title.errors.required">Title is required.</div>
         </div>
       </div>
 
-
       <div class="form-group">
         <label for="authors">Authors:</label>
-        <select [(ngModel)] = "book.authors"  name="authors" id="authors" class="form-control" data-live-search="true" multiple required>
-          <option value=""></option>
-          <option *ngFor="let author of authors" [ngValue]="author">{{author.fullName}}</option>
-        </select>
+        <ng-select
+          #author = "ngModel"
+          [(ngModel)]="book.authors"
+          name="authors"
+          id="authors"
+          [items]="authors"
+          bindLabel="fullName"
+          [multiple]="true"
+          [closeOnSelect]="false"
+          required
+        >
+        </ng-select>
+        <div class="alert alert-danger" *ngIf="author.touched && author.invalid">
+          <div *ngIf="author.errors.required">Author is required.</div>
+        </div>
         <button type="button"  class="btn btn-primary" routerLink="/admin/authors/new">Add new author</button>
       </div>
-      <!--------------------------------------------------------------------------------------------------------------->
 
       <div class="form-group">
         <label for="publishYear">Publication year:</label>
-        <input #publishYear="ngModel" [(ngModel)]="book.publishYear" name="publishYear" id="publishYear" type="text" class="form-control" required [min]="1800">
+        <input #publishYear="ngModel" [(ngModel)]="book.publishYear" name="publishYear" id="publishYear" type="text"
+               class="form-control" required [min]="1800">
         <div class="alert alert-danger" *ngIf="publishYear.touched && publishYear.invalid">
           <div *ngIf="publishYear.errors.required">Publication year is required.</div>
           <div *ngIf="publishYear.errors.min">Publication year should be 1800 or higher.</div>
@@ -31,7 +41,7 @@
 
       <div class="form-group">
         <label for="genre">Genre:</label>
-        <select #genre="ngModel" [(ngModel)] = "book.genre"  name="genre" id="genre" class="form-control" required>
+        <select #genre="ngModel" [(ngModel)]="book.genre" name="genre" id="genre" class="form-control" required>
           <option value=""></option>
           <option *ngFor="let genre of genres" [ngValue]="genre">{{genre.name}}</option>
         </select>
@@ -41,26 +51,29 @@
       </div>
 
       <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea #description [(ngModel)]="book.description" name="description" id="description" class="form-control" rows="5"></textarea>
-      </div>
-
-      <div class="form-group">
         <label for="imageURL">Image URL:</label>
-        <input #imageURL="ngModel" [(ngModel)]="book.imageURL" name="imageURL" id="imageURL" type="text" class="form-control" required url>
+        <input #imageURL="ngModel" [(ngModel)]="book.imageURL" name="imageURL" id="imageURL" type="text"
+               class="form-control" required url>
         <div class="alert alert-danger" *ngIf="imageURL.touched && imageURL.invalid">
           <div *ngIf="imageURL.errors.required"> Image URL is required.</div>
           <div *ngIf="imageURL.errors.url"> It's not a valid URL.</div>
         </div>
       </div>
-      <button class="btn btn-primary">Save</button>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea #description [(ngModel)]="book.description" name="description" id="description" class="form-control"
+                  rows="5"></textarea>
+      </div>
+
+      <button class="btn btn-primary" [disabled]="!f.valid">Save</button>
       <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
     </form>
   </div>
 
   <div class="col-md-6">
-   <book-card [book]="book" [show-actions] ="false"></book-card>
-</div>
+    <book-card [book]="book" [show-actions]="false"></book-card>
+  </div>
 </div>
 
 

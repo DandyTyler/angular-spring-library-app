@@ -18,23 +18,33 @@ export class BooksComponent {
 
   genreId: number;
 
-  constructor(
-    route: ActivatedRoute,
-    bookService: BookService
-  ) {
+  searchString: string;
+
+  constructor(route: ActivatedRoute,
+              bookService: BookService) {
     bookService
       .getAll()
       .switchMap(books => {
         this.books = books;
         return route.queryParamMap;
-    })
+      })
       .subscribe(params => {
         this.genreId = +params.get('genre');
 
-        this.filteredBooks = (this.genreId) ?
-          this.books.filter(b => b.genre.id === this.genreId) :
-          this.books;
+        this.filteredBooks = this.filterByGenre()
       });
+  }
+
+  filterByQuery(query: string) {
+    this.filteredBooks = (query) ?
+      this.filterByGenre().filter(b => b.name.toLowerCase().includes(query.toLowerCase())) :
+      this.filterByGenre();
+  }
+
+  filterByGenre(): Book[] {
+    return (this.genreId) ?
+      this.books.filter(b => b.genre.id === this.genreId) :
+      this.books;
   }
 
 }

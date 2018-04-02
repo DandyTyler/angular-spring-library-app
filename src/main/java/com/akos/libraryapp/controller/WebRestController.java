@@ -3,6 +3,10 @@ package com.akos.libraryapp.controller;
 import com.akos.libraryapp.domain.entity.Author;
 import com.akos.libraryapp.domain.entity.Book;
 import com.akos.libraryapp.domain.entity.Genre;
+import com.akos.libraryapp.domain.entity.security.Authority;
+import com.akos.libraryapp.domain.entity.security.AuthorityName;
+import com.akos.libraryapp.domain.entity.security.User;
+import com.akos.libraryapp.repositories.UserRepository;
 import com.akos.libraryapp.services.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class WebRestController {
@@ -20,13 +26,63 @@ public class WebRestController {
 
     private BookService bookService;
 
+    private UserRepository userRepository;
+
     @Autowired
-    public WebRestController(BookService bookService) {
+    public WebRestController(BookService bookService, UserRepository userRepository) {
         this.bookService = bookService;
+        this.userRepository = userRepository;
     }
 
     @RequestMapping("/api/hi")
     public String hi() {
+
+        Authority adminAuthority = new Authority();
+        adminAuthority.setName(AuthorityName.ROLE_ADMIN);
+
+        Authority userAuthority = new Authority();
+        userAuthority.setName(AuthorityName.ROLE_USER);
+
+        List<Authority> authoritiesAdmin = new ArrayList<>();
+        authoritiesAdmin.add(userAuthority);
+        authoritiesAdmin.add(adminAuthority);
+
+        User admin = new User();
+        admin.setAuthorities(authoritiesAdmin);
+        admin.setEnabled(true);
+        admin.setUsername("admin");
+        admin.setPassword("$2a$08$lDnHPz7eUkSi6ao14Twuau08mzhWrL4kyZGGU5xfiGALO/Vxd5DOi");
+        admin.setFirstName("admin");
+        admin.setLastName("admin");
+        admin.setEmail("admin@admin.com");
+        admin.setLastPasswordResetDate(new Date());
+
+        List<Authority> authoritiesUser = new ArrayList<>();
+        authoritiesUser.add(userAuthority);
+
+        User user = new User();
+        user.setAuthorities(authoritiesUser);
+        user.setEnabled(true);
+        user.setUsername("user");
+        user.setPassword("$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC");
+        user.setFirstName("user");
+        user.setLastName("user");
+        user.setEmail("enabled@user.com");
+        user.setLastPasswordResetDate(new Date());
+
+        User disabledUser = new User();
+        disabledUser.setAuthorities(authoritiesUser);
+        disabledUser.setEnabled(false);
+        disabledUser.setUsername("disabled");
+        disabledUser.setPassword("$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC");
+        disabledUser.setFirstName("user");
+        disabledUser.setLastName("user");
+        disabledUser.setEmail("disabled@user.com");
+        disabledUser.setLastPasswordResetDate(new Date());
+
+        userRepository.save(admin);
+        userRepository.save(user);
+        userRepository.save(disabledUser);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(1947, Calendar.SEPTEMBER, 21);

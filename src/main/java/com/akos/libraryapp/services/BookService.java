@@ -130,6 +130,17 @@ public class BookService {
 
         updatedBook.setImageURL(bookDTO.getImageURL());
 
+        Set<Author> updatedAuthors = new HashSet<>();
+
+        for (AuthorDTO authorDTO: bookDTO.getAuthors()) {
+
+            Author author = authorRepository.getOne(authorDTO.getId());
+
+            updatedAuthors.add(author);
+        }
+
+        updatedBook.setAuthors(updatedAuthors);
+
         bookRepository.save(updatedBook);
 
         bookDTO.setId(id);

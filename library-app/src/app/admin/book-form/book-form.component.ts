@@ -37,12 +37,11 @@ export class BookFormComponent implements OnInit {
   save(book: Book) {
     console.log(this.book);
     if (this.id)
-      this.bookService.update(this.id, this.book).subscribe(updatedBook => console.log(updatedBook));
+      this.bookService.update(this.id, this.book).subscribe(updatedBook =>  this.router.navigate(['/admin/books']));
     else {
       console.log(book);
-      this.bookService.create(book).subscribe(newBook => console.log(newBook));
+      this.bookService.create(book).subscribe(newBook =>  this.router.navigate(['/admin/books']));
     }
-    this.router.navigate(['/admin/books']);
   }
 
   delete() {

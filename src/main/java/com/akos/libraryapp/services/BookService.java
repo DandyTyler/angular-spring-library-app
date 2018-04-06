@@ -91,6 +91,7 @@ public class BookService {
             bookDTO.setPublishYear(book.getPublishYear());
             bookDTO.setImageURL(book.getImageURL());
             bookDTO.setDescription(book.getDescription());
+            bookDTO.setRating(book.getRating());
 
             GenreDTO genreDTO = new GenreDTO();
             genreDTO.setId(book.getGenre().getId());

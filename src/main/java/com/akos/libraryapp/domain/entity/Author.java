@@ -3,6 +3,7 @@ package com.akos.libraryapp.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +19,8 @@ public class Author implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "FULL_NAME")
+    @Column(name = "FULL_NAME", length = 100)
+    @NotNull
     private String fullName;
 
     @Column(name = "BIRTHDAY")

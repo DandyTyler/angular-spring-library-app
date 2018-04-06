@@ -144,7 +144,24 @@ public class WebRestController {
         book1.setGenre(horror);
         book1.setPublishYear(1986);
         book1.setImageURL("https://i.pinimg.com/originals/11/c1/8f/11c18fbb50b3abe089e5f519cc1988cb.png");
-        book1.setDescription("Description");
+        book1.setDescription("It is a 1986 horror novel by American author Stephen King. It was his 22nd book, and his " +
+                "18th novel written under his own name. The story follows the experiences of seven children as they are" +
+                " terrorized by an entity that exploits the fears and phobias of its victims to disguise itself while" +
+                " hunting its prey. \"It\" primarily appears in the form of a clown to attract its preferred prey " +
+                "of young children.\n" +
+                "The novel is told through narratives alternating between two periods, and is largely told in the" +
+                " third-person omniscient mode. It deals with themes that eventually became King staples: the power" +
+                " of memory, childhood trauma and its recurrent echoes in adulthood, the ugliness lurking behind a" +
+                " façade of small-town quaintness, and overcoming evil through mutual trust and sacrifice.\n" +
+                "King has stated that he first conceived the story in 1978, and began writing it in 1981. He also" +
+                " stated that he originally wanted the title character to be a troll like the one in the children's " +
+                "story Three Billy Goats Gruff, but who inhabited the local sewer system rather than just the area" +
+                " beneath one bridge. He also wanted the story to interweave the stories of children and the adults " +
+                "they later become.\n" +
+                "The novel won the British Fantasy Award in 1987, and received nominations for the Locus and World " +
+                "Fantasy Awards that same year.Publishers Weekly listed It as the best-selling book in the United States " +
+                "in 1986.[citation needed] It has been adapted into a 1990 two-part miniseries directed by Tommy " +
+                "Lee Wallace, and into a 2017 film and its 2019 sequel directed by Andy Muschietti.\n");
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Book book2 = new Book("The Shining");
@@ -152,6 +169,24 @@ public class WebRestController {
         book2.setGenre(horror);
         book2.setPublishYear(1977);
         book2.setImageURL("http://assets-cdn.shortlist.com/app/uploads/2012/06/24225210/30-most-evil-lines-from-books-3.jpg");
+        book2.setDescription("The Shining is a horror novel by American author Stephen King. Published in 1977, " +
+                "it is King's third published novel and first hardback bestseller: the success of the book firmly" +
+                " established King as a preeminent author in the horror genre. The setting and characters are " +
+                "influenced by King's personal experiences, including both his visit to The Stanley Hotel in 1974 and his recovery from alcoholism. The novel was followed by a sequel, Doctor Sleep, published in 2013.\n" +
+                "\n" +
+                "The Shining centers on the life of Jack Torrance, an aspiring writer and recovering alcoholic who " +
+                "accepts a position as the off-season caretaker of the historic Overlook Hotel in the Colorado" +
+                " Rockies. His family accompanies him on this job, including his young son Danny Torrance, who" +
+                " possesses \"the shining\", an array of psychic abilities that allow Danny to see the hotel's" +
+                " horrific past. Soon, after a winter storm leaves them snowbound, the supernatural forces inhabiting" +
+                " the hotel influence Jack's sanity, leaving his wife and son in incredible danger.\n" +
+                "\n" +
+                "The novel was adapted into a 1980 feature film of the same name directed by Stanley Kubrick and" +
+                " co-written with Diane Johnson. Although King himself remains disappointed with the adaptation," +
+                " having criticized its handling of the book's themes and of Wendy's character, it is regarded as" +
+                " one of the greatest horror films ever made. A television mini-series later premiered in 1997, with" +
+                "the making closely monitored by King to ensure it had followed the novel's narrative. King wrote the" +
+                " series himself and was reportedly unable to criticize the Kubrick version due to his contract.\n");
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Book book3 = new Book("Icewind Dale");

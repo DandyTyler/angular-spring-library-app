@@ -11,7 +11,7 @@ import {Genre} from "../models/genre";
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent {
+export class BooksComponent implements OnInit{
 
   books: Book[] = [];
   filteredBooks: Book[] = [];
@@ -32,6 +32,7 @@ export class BooksComponent {
         this.genreId = +params.get('genre');
 
         this.filteredBooks = this.filterByGenre()
+        this.filterByQuery(this.searchString)
       });
   }
 
@@ -47,4 +48,7 @@ export class BooksComponent {
       this.books;
   }
 
+  ngOnInit(){
+
+  }
 }

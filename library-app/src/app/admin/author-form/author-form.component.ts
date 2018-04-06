@@ -26,9 +26,9 @@ export class AuthorFormComponent implements OnInit {
     console.log(author);
 
     if (this.id)
-      this.authorService.update(this.id, this.author).subscribe(updatedAuthor => console.log(updatedAuthor));
+      this.authorService.update(this.id, this.author).subscribe(updatedAuthor =>  this.router.navigate(['/admin/authors']));
     else {
-      this.authorService.create(author).subscribe(author => console.log(author))
+      this.authorService.create(author).subscribe(author => this.router.navigate(['/admin/authors']));
     }
   }
 

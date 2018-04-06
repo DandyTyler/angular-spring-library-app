@@ -10,7 +10,7 @@ import {Book} from "../../models/book";
   templateUrl: './admin-authors.component.html',
   styleUrls: ['./admin-authors.component.css']
 })
-export class AdminAuthorsComponent implements OnInit {
+export class AdminAuthorsComponent {
 
   authors : Author[];
 
@@ -53,9 +53,6 @@ export class AdminAuthorsComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  ngOnInit() {
   }
 
 }

@@ -1,14 +1,19 @@
 package com.akos.libraryapp.domain.entity.security;
 
+import com.akos.libraryapp.domain.entity.Vote;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
-import java.util.List;
+import java.io.Serializable;
+import java.util.*;
 
 @Entity
-@Table(name = "USER")
-public class User {
+@Table(name = "USERS")
+@JsonIgnoreProperties({"id", "password", "lastPasswordResetDate", "votes"})
+public class User implements Serializable {
 
     @Id
     @Column(name = "ID")
@@ -49,6 +54,9 @@ public class User {
     @NotNull
     private Date lastPasswordResetDate;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<Vote> votes = new ArrayList<>();
+
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.REFRESH
@@ -57,6 +65,7 @@ public class User {
             name = "USER_AUTHORITY",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID")})
+    @JsonIgnoreProperties("users")
     private List<Authority> authorities;
 
     public Long getId() {
@@ -113,6 +122,14 @@ public class User {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 
     public List<Authority> getAuthorities() {

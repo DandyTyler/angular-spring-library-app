@@ -3,13 +3,15 @@ package com.akos.libraryapp.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "BOOK")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","votes"})
 public class Book implements Serializable {
 
     @Id
@@ -40,6 +42,9 @@ public class Book implements Serializable {
     @JsonIgnoreProperties("books")
     private Genre genre;
 
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private Set<Vote> votes = new HashSet<>();
+
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "PUBLISHER_ID", foreignKey = @ForeignKey(name = "FK_PUBLISHER"))
     private Publisher publisher;
@@ -53,10 +58,12 @@ public class Book implements Serializable {
     private byte[] content;
 
     @Column(name = "DESCRIPTION")
+    @Lob
     private String description;
 
     @Column(name = "RATING")
-    private String rating;
+    @NotNull
+    private Long rating = 0L;
 
 
     public Book() {
@@ -138,12 +145,20 @@ public class Book implements Serializable {
         this.description = description;
     }
 
-    public String getRating() {
+    public Long  getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(Long  rating) {
         this.rating = rating;
+    }
+
+    public Set<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Set<Vote> votes) {
+        this.votes = votes;
     }
 
     @Override

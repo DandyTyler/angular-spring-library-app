@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthorService} from "../services/author.service";
 
 @Component({
-  selector: 'app-author-details',
+  selector: 'author-details',
   templateUrl: './author-details.component.html',
   styleUrls: ['./author-details.component.css']
 })

@@ -1,0 +1,50 @@
+<p>
+  <input
+    #query
+    [(ngModel)]="searchQuery"
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search...">
+</p>
+
+<div>
+  <data-table
+    id="usersTable"
+    headerTitle="Users"
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+
+    [indexColumnHeader]="'#'"
+  >
+    <data-table-column
+      [property]="'username'"
+      [header]="'User'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+      <ng-template #dataTableCell let-item="item">
+        <a [routerLink]="['/user/',item.username]">{{item.username}}</a>
+      </ng-template>
+    </data-table-column>
+
+    <data-table-column
+      [property]="'email'"
+      [header]="'email'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+      [property]="'enabled'"
+      [header]="'Is enabled'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+      <ng-template #dataTableCell let-item="item">
+        <button class="btn" type="button" (click)="switchEnabled(item)">{{item.enabled}}</button>
+      </ng-template>
+    </data-table-column>
+
+  </data-table>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <img *ngIf="book.imageURL" class="align-self-start w-100" [src]="book.imageURL"
+           alt="No photo">
+    </div>
+
+    <div class="col-8">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{book.name}}
+          <span *ngIf="book.publishYear"> ({{book.publishYear}})</span>
+        </h5>
+        <hr>
+        <p
+          class="card-text lead" *ngFor="let a of book.authors">
+          <a [routerLink]="['/authors/',a.id]">{{a.fullName}}</a>
+        </p>
+        <p
+          class="card-text" *ngIf="book.genre">
+          Genre: {{book.genre.name}}<br>
+          Users rating: {{book.rating}}<br>
+          <span>
+            <ngb-rating
+              [(rate)]="userVoteValue"
+              min="1"
+              max="5"
+              [readonly]="voted">
+              <ng-template let-fill="fill" let-index="index">
+                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+             </ng-template>
+          </ngb-rating><br>
+
+          <button [disabled]="voted||userVoteValue===0" class="btn btn-sm" (click)="vote()"> <span
+            class="fa fa-check"></span></button>
+          </span>
+        </p>
+        <p
+          class="card-text">
+          Description: <br>
+          {{book.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

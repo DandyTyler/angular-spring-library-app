@@ -27,6 +27,10 @@ import {AuthGuard} from "./services/auth-guard.service";
 import {TokenInterceptor} from "./services/token.interceptor";
 import {AdminAuthGuard} from "./services/admin-auth-guard.service";
 import {NgSelectModule} from "@ng-select/ng-select";
+import { BookDetailsComponent } from './book-details/book-details.component';
+import {UserService} from "./services/user.service";
+import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,9 @@ import {NgSelectModule} from "@ng-select/ng-select";
     AuthorDetailsComponent,
     AuthorFormComponent,
     AdminAuthorsComponent,
+    BookDetailsComponent,
+    AdminUsersComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,14 +61,17 @@ import {NgSelectModule} from "@ng-select/ng-select";
     RouterModule.forRoot([
       {path: '', component: BooksComponent},
       {path: 'books', component: BooksComponent},
+      {path: 'books/:id', component: BookDetailsComponent},
       {path: 'login', component: LoginComponent},
       {path: 'authors/:id', component: AuthorDetailsComponent},
+      {path: 'user/:username', component: UserProfileComponent, canActivate: [AuthGuard]},
       {path: 'admin/authors/new', component: AuthorFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/authors/:id', component: AuthorFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/authors', component: AdminAuthorsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/books/new', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/books/:id', component: BookFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
-      {path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuard]}
+      {path: 'admin/books', component: AdminBooksComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/users', component: AdminUsersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
     ])
   ],
   providers: [
@@ -69,6 +79,7 @@ import {NgSelectModule} from "@ng-select/ng-select";
     BookService,
     AuthorService,
     AuthService,
+    UserService,
     AuthGuard,
     AdminAuthGuard,
     {

@@ -20,8 +20,10 @@
         </a>
 
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" [routerLink]="['/user/', authService.getCurrentUser().sub]">My Profile</a>
           <a class="dropdown-item" routerLink="/admin/books" *ngIf="authService.getCurrentUser().isAdmin">Manage books</a>
           <a class="dropdown-item" routerLink="/admin/authors" *ngIf="authService.getCurrentUser().isAdmin">Manage authors</a>
+          <a class="dropdown-item" routerLink="/admin/users" *ngIf="authService.getCurrentUser().isAdmin">Manage users</a>
           <a class="dropdown-item"  (click)="logout()">Log Out</a>
         </div>
       </li>

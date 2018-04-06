@@ -7,7 +7,8 @@ export class Book {
               public authors: Author[],
               public publishYear: number,
               public imageURL: string,
-              public description: string) {
+              public description: string,
+              public rating: number) {
   }
 
 }

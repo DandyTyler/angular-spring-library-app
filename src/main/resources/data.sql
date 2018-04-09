@@ -1,9 +1,9 @@
 INSERT INTO PUBLIC.AUTHORITY (ID, NAME) VALUES (2, 'ROLE_USER');
 INSERT INTO PUBLIC.AUTHORITY (ID, NAME) VALUES (3, 'ROLE_ADMIN');
 
-INSERT INTO PUBLIC.USERS (ID, EMAIL, ENABLED, FIRSTNAME, LASTNAME, LASTPASSWORDRESETDATE, PASSWORD, USERNAME) VALUES (1, 'admin@admin.com', true, 'admin', 'admin', '2018-04-06 20:24:25.702000000', '$2a$08$lDnHPz7eUkSi6ao14Twuau08mzhWrL4kyZGGU5xfiGALO/Vxd5DOi', 'admin');
-INSERT INTO PUBLIC.USERS (ID, EMAIL, ENABLED, FIRSTNAME, LASTNAME, LASTPASSWORDRESETDATE, PASSWORD, USERNAME) VALUES (4, 'enabled@user.com', true, 'user', 'user', '2018-04-06 20:24:25.702000000', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'user');
-INSERT INTO PUBLIC.USERS (ID, EMAIL, ENABLED, FIRSTNAME, LASTNAME, LASTPASSWORDRESETDATE, PASSWORD, USERNAME) VALUES (5, 'disabled@user.com', false, 'user', 'user', '2018-04-06 20:24:25.702000000', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'disabled');
+INSERT INTO PUBLIC.USERS (ID, EMAIL, ENABLED, FIRSTNAME, LASTNAME, LASTPASSWORDRESETDATE, PASSWORD, USERNAME) VALUES (1, 'admin@admin.com', true, 'admin', 'admin', '2018-04-07 14:41:11.565000000', '$2a$08$lDnHPz7eUkSi6ao14Twuau08mzhWrL4kyZGGU5xfiGALO/Vxd5DOi', 'admin');
+INSERT INTO PUBLIC.USERS (ID, EMAIL, ENABLED, FIRSTNAME, LASTNAME, LASTPASSWORDRESETDATE, PASSWORD, USERNAME) VALUES (4, 'enabled@user.com', true, 'user', 'user', '2018-04-07 14:41:11.565000000', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'user');
+INSERT INTO PUBLIC.USERS (ID, EMAIL, ENABLED, FIRSTNAME, LASTNAME, LASTPASSWORDRESETDATE, PASSWORD, USERNAME) VALUES (5, 'disabled@user.com', false, 'user', 'user', '2018-04-07 14:41:11.565000000', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'disabled');
 
 INSERT INTO PUBLIC.USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (1, 2);
 INSERT INTO PUBLIC.USER_AUTHORITY (USER_ID, AUTHORITY_ID) VALUES (1, 3);
@@ -17,12 +17,12 @@ INSERT INTO PUBLIC.GENRE (ID, NAME) VALUES (22, 'Comedy');
 
 INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (8, 'Stephen Edwin King is an American author of horror, supernatural fiction, suspense, science fiction, and fantasy. His books have sold more than 350 million copies, many of which have been adapted into feature films, miniseries, television series, and comic books. King has published 54 novels, including seven under the pen name Richard Bachman, and six non-fiction books. He has written around 200 short stories, most of which have been collected in book collections.
 King has received Bram Stoker Awards, World Fantasy Awards, and British Fantasy Society Awards. In 2003, the National Book Foundation awarded him the Medal for Distinguished Contribution to American Letters.He has also received awards for his contribution to literature for his entire oeuvre, such as the World Fantasy Award for Life Achievement (2004), and the Grand Master Award from the Mystery Writers of America (2007). In 2015, King was awarded with a National Medal of Arts from the United States National Endowment for the Arts for his contributions to literature. He has been described as the "King of Horror".
-', '1947-09-21 20:24:25.790000000', 'Stephen King', 'https://pbs.twimg.com/profile_images/378800000836981162/b683f7509ec792c3e481ead332940cdc.jpeg');
-INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (12, null, '1947-09-21 20:24:25.790000000', 'R.A. Salvatore', null);
-INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (15, null, '1890-03-20 20:24:25.790000000', 'H.P. Lovecraft ', null);
-INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (18, null, '1986-10-08 20:24:25.790000000', 'Frank Herbert', null);
-INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (20, null, '1903-06-25 20:24:25.790000000', 'George Orwell', null);
-INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (23, null, '1952-03-11 20:24:25.790000000', 'Douglas Adams', null);
+', '1947-09-21 14:41:11.655000000', 'Stephen King', 'https://pbs.twimg.com/profile_images/378800000836981162/b683f7509ec792c3e481ead332940cdc.jpeg');
+INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (12, null, '1947-09-21 14:41:11.655000000', 'R.A. Salvatore', null);
+INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (15, null, '1890-03-20 14:41:11.655000000', 'H.P. Lovecraft ', null);
+INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (18, null, '1986-10-08 14:41:11.655000000', 'Frank Herbert', null);
+INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (20, null, '1903-06-25 14:41:11.655000000', 'George Orwell', null);
+INSERT INTO PUBLIC.AUTHOR (ID, BIOGRAPHY, BIRTHDAY, FULL_NAME, PHOTO_URL) VALUES (23, null, '1952-03-11 14:41:11.655000000', 'Douglas Adams', null);
 
 INSERT INTO PUBLIC.BOOK (ID, CONTENT, DESCRIPTION, IMAGE_URL, NAME, PUBLISH_YEAR, RATING, GENRE_ID, PUBLISHER_ID) VALUES (6, null, 'It is a 1986 horror novel by American author Stephen King. It was his 22nd book, and his 18th novel written under his own name. The story follows the experiences of seven children as they are terrorized by an entity that exploits the fears and phobias of its victims to disguise itself while hunting its prey. "It" primarily appears in the form of a clown to attract its preferred prey of young children.
 The novel is told through narratives alternating between two periods, and is largely told in the third-person omniscient mode. It deals with themes that eventually became King staples: the power of memory, childhood trauma and its recurrent echoes in adulthood, the ugliness lurking behind a façade of small-town quaintness, and overcoming evil through mutual trust and sacrifice.
@@ -50,4 +50,3 @@ INSERT INTO PUBLIC.BOOK_AUTHOR_DETAIL (BOOK_ID, AUTHOR_ID) VALUES (14, 15);
 INSERT INTO PUBLIC.BOOK_AUTHOR_DETAIL (BOOK_ID, AUTHOR_ID) VALUES (16, 18);
 INSERT INTO PUBLIC.BOOK_AUTHOR_DETAIL (BOOK_ID, AUTHOR_ID) VALUES (19, 20);
 INSERT INTO PUBLIC.BOOK_AUTHOR_DETAIL (BOOK_ID, AUTHOR_ID) VALUES (21, 23);
-

@@ -24,7 +24,7 @@ export class BookService {
   }
 
   update(bookId, book) : Observable<Book>{
-    return this.http.post<Book>(this.url+ '/'+bookId, book)
+    return this.http.put<Book>(this.url+ '/'+bookId, book)
   }
 
   delete(bookId){

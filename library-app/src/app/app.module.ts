@@ -31,6 +31,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import {UserService} from "./services/user.service";
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { RegistrationComponent } from './login/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     BookDetailsComponent,
     AdminUsersComponent,
     UserProfileComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {path: '', component: BooksComponent},
+      {path: 'registration', component: RegistrationComponent},
       {path: 'books', component: BooksComponent},
       {path: 'books/:id', component: BookDetailsComponent},
       {path: 'login', component: LoginComponent},

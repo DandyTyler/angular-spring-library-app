@@ -40,7 +40,7 @@ public class BookController {
         return bookService.createBook(bookDTO);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @PreAuthorize("hasRole('ADMIN')")
     public BookDTO updateBook(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
 

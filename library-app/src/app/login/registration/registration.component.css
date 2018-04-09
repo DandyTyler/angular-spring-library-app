@@ -1,0 +1,18 @@
+/*.form-control.ng-touched.ng-invalid  {*/
+  /*border: 2px solid #a94442;*/
+/*}*/
+
+.form-control.ng-invalid.ng-dirty{
+  border-bottom: 2px solid #a94442;
+  box-shadow: 0 1px 0 0  #a94442 !important;
+}
+.invalid-label {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #ff3338;
+}
+
+.registration-form{
+  margin-top: 15%;
+}

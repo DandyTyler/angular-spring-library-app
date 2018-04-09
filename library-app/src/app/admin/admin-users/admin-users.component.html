@@ -42,7 +42,7 @@
       [resizable]="true"
     >
       <ng-template #dataTableCell let-item="item">
-        <button class="btn" type="button" (click)="switchEnabled(item)">{{item.enabled}}</button>
+        <button class="btn btn-sm"  [ngClass]="{'btn-danger': !item.enabled,'btn-primary': item.enabled}" type="button" (click)="switchEnabled(item)">{{item.enabled}}</button>
       </ng-template>
     </data-table-column>
 

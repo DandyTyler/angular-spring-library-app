@@ -1,17 +1,22 @@
 package com.akos.libraryapp.controller;
 
+import com.akos.libraryapp.domain.dto.UserDTO;
 import com.akos.libraryapp.domain.dto.VoteDTO;
 import com.akos.libraryapp.domain.entity.Vote;
 import com.akos.libraryapp.domain.entity.security.User;
 import com.akos.libraryapp.repositories.UserRepository;
 import com.akos.libraryapp.repositories.VoteRepository;
+import com.akos.libraryapp.security.AuthenticationException;
 import com.akos.libraryapp.security.JwtTokenUtil;
 import com.akos.libraryapp.security.JwtUser;
+import com.akos.libraryapp.services.UserCreationException;
 import com.akos.libraryapp.services.UserService;
 import com.akos.libraryapp.services.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,8 +59,18 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userService.getAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public UserDTO createUser(@RequestBody User user) {
+        return userService.saveUser(user);
+    }
+
+    @RequestMapping(value = "/{username}", method = RequestMethod.PUT)
+    public UserDTO updateUser(@PathVariable String username, @RequestBody User user) {
+        return userService.updateUser(username, user);
     }
 
     @RequestMapping(value = "/current/vote", method = RequestMethod.POST)
@@ -65,7 +80,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
-    public User getUser(@PathVariable String username) {
+    public UserDTO getUser(@PathVariable String username) {
         return userService.getUser(username);
     }
 
@@ -89,11 +104,17 @@ public class UserController {
 
 
     @RequestMapping(value = "/user/{username}/status", method = RequestMethod.POST)
-    public User disableUser(@PathVariable String username, @RequestParam(value = "setEnabled") Boolean setEnabled) {
+    public UserDTO disableUser(@PathVariable String username, @RequestParam(value = "setEnabled") Boolean setEnabled) {
         if (setEnabled) {
             return userService.enableUser(username);
         } else {
             return userService.disableUser(username);
         }
     }
+
+    @ExceptionHandler({UserCreationException.class})
+    public ResponseEntity<String> handleAuthenticationException(UserCreationException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
+
 }

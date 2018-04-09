@@ -12,7 +12,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "USERS")
-@JsonIgnoreProperties({"id", "password", "lastPasswordResetDate", "votes"})
+@JsonIgnoreProperties({"lastPasswordResetDate", "votes"})
 public class User implements Serializable {
 
     @Id
@@ -59,7 +59,7 @@ public class User implements Serializable {
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
-            CascadeType.REFRESH
+            CascadeType.MERGE
     }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "USER_AUTHORITY",

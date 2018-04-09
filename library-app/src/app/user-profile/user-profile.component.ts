@@ -3,6 +3,7 @@ import {UserService} from "../services/user.service";
 import {User} from "../models/user";
 import {ActivatedRoute} from "@angular/router";
 import {AuthService} from "../services/auth.service";
+import {FormGroup, NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-user-profile',
@@ -15,12 +16,15 @@ export class UserProfileComponent implements OnInit {
 
   userVotes;
 
+  profileForm: NgForm;
+
   isEditing: boolean;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService) {
   }
 
-  edit() {
+  edit(f: NgForm) {
+    this.profileForm = f;
     if (this.isEditing) {
       this.isEditing = false;
     } else {
@@ -28,8 +32,29 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  save(f: NgForm) {
+    this.userService.updateUser(this.user.username, f.value).subscribe(updatedUser=> this.user = updatedUser,
+      error => {
+        f.setValue({
+          "firstName": this.user.firstName,
+          "lastName": this.user.lastName,
+          "email": this.user.email
+        });
+      });
+    this.isEditing = false;
+  }
+
+  cancel(){
+    this.profileForm.setValue({
+      "firstName": this.user.firstName,
+      "lastName": this.user.lastName,
+      "email": this.user.email
+    });
+    this.isEditing = false;
+  }
+
   ngOnInit() {
-    this.route.paramMap.subscribe(params=> {
+    this.route.paramMap.subscribe(params => {
 
       let username = params.get("username");
       if (username) {

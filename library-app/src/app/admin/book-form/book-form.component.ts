@@ -21,6 +21,9 @@ export class BookFormComponent implements OnInit {
   book = {};
   id;
 
+  content: File = null;
+  fileSelected: boolean = false;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private genreService: GenreService,
@@ -28,26 +31,46 @@ export class BookFormComponent implements OnInit {
               private bookService: BookService) {
     genreService.getAll().subscribe(genres => this.genres = genres);
 
-    this.authorService.getAll().subscribe(authors=> this.authors = authors);
+    this.authorService.getAll().subscribe(authors => this.authors = authors);
 
     this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id) this.bookService.get(this.id).take(1).subscribe(b => this.book = b);
+    if (this.id) this.bookService.get(this.id).take(1).subscribe(b => {
+      this.book = b;
+      this.fileSelected = true;
+    });
   }
 
   save(book: Book) {
-    console.log(this.book);
-    if (this.id)
-      this.bookService.update(this.id, this.book).subscribe(updatedBook =>  this.router.navigate(['/admin/books']));
-    else {
-      console.log(book);
-      this.bookService.create(book).subscribe(newBook =>  this.router.navigate(['/admin/books']));
+
+    if (this.id) {
+      this.bookService.update(this.id, this.book).subscribe(updatedBook => this.router.navigate(['/admin/books']));
+      if(this.content){
+        this.bookService.updateContent(this.id, this.content).subscribe(()=> console.log("Success"))
+      }
     }
+    else {
+      const fd = new FormData();
+      fd.append('content', this.content, this.content.name);
+      fd.append('book', new Blob([JSON.stringify(this.book)], {type: 'application/json'}));
+
+
+      console.log(book);
+      this.bookService.create(fd).subscribe(newBook => this.router.navigate(['/admin/books']));
+    }
+
   }
 
   delete() {
     if (!confirm('Are you sure you want to delete this book?')) return;
 
-    this.bookService.delete(this.id).subscribe(()=>this.router.navigate(['/admin/books']));
+    this.bookService.delete(this.id).subscribe(() => this.router.navigate(['/admin/books']));
+  }
+
+  onFileSelected(event) {
+    if (event.target.files[0]) {
+      this.content = <File> event.target.files[0];
+      this.fileSelected = true;
+    } else this.fileSelected = false;
   }
 
   ngOnInit() {

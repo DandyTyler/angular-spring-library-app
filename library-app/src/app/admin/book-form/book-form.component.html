@@ -60,13 +60,18 @@
         </div>
       </div>
 
+      <div >
+        <label for="content">Content:</label>
+        <input #content = "ngModel" (ngModel) = "content" name="content" id="content" type="file" (change)="onFileSelected($event)" class="form-control">
+      </div>
+
       <div class="form-group">
         <label for="description">Description:</label>
         <textarea #description [(ngModel)]="book.description" name="description" id="description" class="form-control"
                   rows="5"></textarea>
       </div>
 
-      <button class="btn btn-primary" [disabled]="!f.valid">Save</button>
+      <button class="btn btn-primary" [disabled]="!f.valid ||!fileSelected">Save</button>
       <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
     </form>
   </div>

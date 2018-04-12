@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Book} from "../models/book";
 import {Observable} from "rxjs/Observable";
-import {Genre} from "../models/genre";
+import {ResponseContentType} from "@angular/http";
 
 @Injectable()
 export class BookService {
@@ -15,10 +15,6 @@ export class BookService {
     return  this.http.get<Book[]>(this.url);
   }
 
-  create(book: Book): Observable<Book> {
-    return this.http.post<Book>(this.url, book);
-  }
-
   get(bookId) : Observable<Book>{
     return this.http.get<Book>(this.url+ '/'+bookId)
   }
@@ -27,8 +23,23 @@ export class BookService {
     return this.http.put<Book>(this.url+ '/'+bookId, book)
   }
 
+  updateContent(bookId, file: File){
+    let fd = new FormData();
+    fd.append('content', file, file.name);
+
+    return this.http.put(this.url+ '/pdf/'+bookId, fd)
+  }
+
   delete(bookId){
     return this.http.delete(this.url+'/'+bookId);
+  }
+
+  create(bookFormData: FormData): Observable<Book> {
+    return this.http.post<Book>(this.url, bookFormData);
+  }
+
+  getContent(bookId) {
+    return this.http.get(this.url+ '/pdf/'+bookId,{responseType: 'blob' })
   }
 
 }

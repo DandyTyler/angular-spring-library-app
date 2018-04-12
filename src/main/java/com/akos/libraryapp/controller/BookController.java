@@ -6,6 +6,7 @@ import com.akos.libraryapp.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -19,10 +20,6 @@ public class BookController {
         this.bookService = bookService;
     }
 
-//    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-//    public List<Book> getAllBooks() {
-//        return bookService.getAllBooks();
-//    }
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public List<BookDTO> getAllBooks() {
@@ -34,11 +31,30 @@ public class BookController {
         return bookService.getById(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+//    @RequestMapping(method = RequestMethod.POST)
+//    @PreAuthorize("hasRole('ADMIN')")
+//    public BookDTO addBook(@RequestBody BookDTO bookDTO) {
+//        return bookService.createBook(bookDTO);
+//    }
+
+/////////////////////////////////////
+    @RequestMapping(method = RequestMethod.POST,produces = "application/json", consumes = {"multipart/form-data"})
     @PreAuthorize("hasRole('ADMIN')")
-    public BookDTO addBook(@RequestBody BookDTO bookDTO) {
-        return bookService.createBook(bookDTO);
+    public BookDTO createBook(@RequestPart("content") MultipartFile content, @RequestPart("book") BookDTO bookDTO) {
+
+        return bookService.createBook(content, bookDTO);
     }
+
+    @RequestMapping(value = "/pdf/{id}", method = RequestMethod.GET, produces = "application/pdf")
+    public byte[] getPdf(@PathVariable Long id) {
+        return bookService.getById(id).getContent();
+    }
+
+    @RequestMapping(value = "/pdf/{id}", method = RequestMethod.PUT, consumes = {"multipart/form-data"})
+    public void updatePdf(@PathVariable Long id, @RequestPart("content") MultipartFile content) {
+        bookService.updateContent(id, content);
+    }
+    ////////////////////////////////////////
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @PreAuthorize("hasRole('ADMIN')")

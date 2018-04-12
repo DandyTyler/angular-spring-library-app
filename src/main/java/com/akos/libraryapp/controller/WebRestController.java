@@ -11,9 +11,11 @@ import com.akos.libraryapp.services.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -163,6 +165,16 @@ public class WebRestController {
                 "in 1986.[citation needed] It has been adapted into a 1990 two-part miniseries directed by Tommy " +
                 "Lee Wallace, and into a 2017 film and its 2019 sequel directed by Andy Muschietti.\n");
 
+        try {
+            ClassPathResource backImgFile = new ClassPathResource("books/pdf-test.pdf");
+            byte[] arrayPic = new byte[0];
+            arrayPic = new byte[(int) backImgFile.contentLength()];
+            backImgFile.getInputStream().read(arrayPic);
+            book1.setContent(arrayPic);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Book book2 = new Book("The Shining");
         book2.getAuthors().add(steev);
@@ -187,6 +199,16 @@ public class WebRestController {
                 " one of the greatest horror films ever made. A television mini-series later premiered in 1997, with" +
                 "the making closely monitored by King to ensure it had followed the novel's narrative. King wrote the" +
                 " series himself and was reportedly unable to criticize the Kubrick version due to his contract.\n");
+
+        try {
+            ClassPathResource backImgFile = new ClassPathResource("books/pdf-test2.pdf");
+            byte[] arrayPic = new byte[0];
+            arrayPic = new byte[(int) backImgFile.contentLength()];
+            backImgFile.getInputStream().read(arrayPic);
+            book2.setContent(arrayPic);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Book book3 = new Book("Icewind Dale");

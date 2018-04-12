@@ -31,9 +31,17 @@
              </ng-template>
           </ngb-rating><br>
 
-          <button [disabled]="voted||userVoteValue===0" class="btn btn-sm" (click)="vote()"> <span
-            class="fa fa-check"></span></button>
+          <button
+            [disabled]="voted||userVoteValue===0"
+            class="btn btn-sm" (click)="vote()">
+            <span class="fa fa-check"></span>
+          </button>
           </span>
+          <button
+            routerLink="/books/{{book.id}}/read"
+            class="btn btn-sm btn-sm btn-primary"
+            type="button">Read
+          </button>
         </p>
         <p
           class="card-text">

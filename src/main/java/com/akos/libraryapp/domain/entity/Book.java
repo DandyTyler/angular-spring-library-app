@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "BOOK")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","votes"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","votes","content"})
 public class Book implements Serializable {
 
     @Id
@@ -45,15 +45,13 @@ public class Book implements Serializable {
     @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Vote> votes = new HashSet<>();
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "PUBLISHER_ID", foreignKey = @ForeignKey(name = "FK_PUBLISHER"))
-    private Publisher publisher;
-
     @Column(name = "PUBLISH_YEAR")
     private Integer publishYear;
 
     @Column(name = "IMAGE_URL")
     private String imageURL;
+
+    @Column(name = "CONTENT")
     @Lob
     private byte[] content;
 
@@ -103,14 +101,6 @@ public class Book implements Serializable {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
-    }
-
-    public Publisher getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
     }
 
     public Integer getPublishYear() {

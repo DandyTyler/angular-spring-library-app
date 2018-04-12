@@ -18,7 +18,11 @@
     [header]="'Name'"
     [sortable]="true"
     [resizable]="true"
-  ></data-table-column>
+  >
+    <ng-template #dataTableCell let-item="item">
+      <a [routerLink]="['/books/',item.id]">{{item.name}}</a>
+    </ng-template>
+  </data-table-column>
 
   <data-table-column
     [property]="'authors'"

@@ -11,7 +11,9 @@ import com.akos.libraryapp.repositories.BookRepository;
 import com.akos.libraryapp.repositories.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -66,6 +68,38 @@ public class BookService {
         newBook.setImageURL(bookDTO.getImageURL());
 
         newBook.setDescription(bookDTO.getDescription());
+
+        for (AuthorDTO authorDTO: bookDTO.getAuthors()) {
+
+            Author author = authorRepository.getOne(authorDTO.getId());
+
+            newBook.getAuthors().add(author);
+        }
+
+        bookDTO.setId(bookRepository.save(newBook).getId());
+
+        return bookDTO;
+    }
+
+    public BookDTO createBook(MultipartFile content, BookDTO bookDTO) {
+
+        Book newBook = new Book(bookDTO.getName());
+
+        Genre genre = genreRepository.getOne(bookDTO.getGenre().getId());
+
+        newBook.setGenre(genre);
+
+        newBook.setPublishYear(bookDTO.getPublishYear());
+
+        newBook.setImageURL(bookDTO.getImageURL());
+
+        newBook.setDescription(bookDTO.getDescription());
+
+        try {
+            newBook.setContent(content.getBytes());
+        } catch (IOException e) {
+           throw new RuntimeException(e);
+        }
 
         for (AuthorDTO authorDTO: bookDTO.getAuthors()) {
 
@@ -147,6 +181,18 @@ public class BookService {
         bookDTO.setId(id);
 
         return bookDTO;
+    }
+
+    public void updateContent(Long id, MultipartFile content){
+
+        Book book = bookRepository.getOne(id);
+        System.out.println(book.getName());
+        try {
+            book.setContent(content.getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        bookRepository.save(book);
     }
 
     public void deleteBook(Long id){

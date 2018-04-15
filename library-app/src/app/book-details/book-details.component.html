@@ -4,7 +4,6 @@
       <img *ngIf="book.imageURL" class="align-self-start w-100" [src]="book.imageURL"
            alt="No photo">
     </div>
-
     <div class="col-8">
       <div class="card-body">
         <h5 class="card-title">
@@ -19,20 +18,25 @@
         <p
           class="card-text" *ngIf="book.genre">
           Genre: {{book.genre.name}}<br>
-          Users rating: {{book.rating}}<br>
+          Users rating: {{book.rating | number:'1.1-1'}}<br>
           <span>
             <ngb-rating
-              [(rate)]="userVoteValue"
+              [(rate)]="userVote.value"
               min="1"
               max="5"
               [readonly]="voted">
               <ng-template let-fill="fill" let-index="index">
                         <span class="star" [class.filled]="fill === 100">&#9733;</span>
              </ng-template>
-          </ngb-rating><br>
-
+          </ngb-rating>
+            <div *ngIf="userVote.value!==0&&!voted">
+              <input
+                [(ngModel)]="userVote.comment" maxlength="140"
+                type="text" class="form-control">
+            </div>
+            <br>
           <button
-            [disabled]="voted||userVoteValue===0"
+            [disabled]="voted||userVote.value===0"
             class="btn btn-sm" (click)="vote()">
             <span class="fa fa-check"></span>
           </button>
@@ -49,6 +53,31 @@
           {{book.description }}
         </p>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <br>
+      <h4>Users votes:</h4>
+      <ul class="list-group">
+        <li
+          *ngFor="let vote of votes" class="list-group-item">
+          <h5 class="mb-1"><a [routerLink]="['/user/',vote.username]">{{vote.username}}</a></h5>
+
+          <div class="comment-rating">
+            <ngb-rating
+              [(rate)]="vote.value"
+              [readonly]="true" max="5">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+          </div>
+          <div class="bot-border"></div>
+
+          {{vote.comment}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

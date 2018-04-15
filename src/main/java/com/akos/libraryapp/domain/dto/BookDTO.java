@@ -21,13 +21,13 @@ public class BookDTO {
 
     private String description;
 
-    private Long rating;
+    private Double rating;
 
-    public Long getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(Long rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 

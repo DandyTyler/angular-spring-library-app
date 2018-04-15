@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Book} from "../models/book";
 import {Observable} from "rxjs/Observable";
 import {ResponseContentType} from "@angular/http";
+import {Vote} from "../models/vote";
 
 @Injectable()
 export class BookService {
@@ -17,6 +18,10 @@ export class BookService {
 
   get(bookId) : Observable<Book>{
     return this.http.get<Book>(this.url+ '/'+bookId)
+  }
+
+  getVotes(bookId) : Observable<Vote[]>{
+    return this.http.get<Vote[]>(this.url+ '/'+bookId +'/votes/')
   }
 
   update(bookId, book) : Observable<Book>{

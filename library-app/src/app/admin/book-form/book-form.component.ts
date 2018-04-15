@@ -18,7 +18,7 @@ export class BookFormComponent implements OnInit {
 
   genres: Genre[];
   authors: Author[];
-  book = {};
+  book = new Book(null,null,null,null,null,null,null,);
   id;
 
   content: File = null;

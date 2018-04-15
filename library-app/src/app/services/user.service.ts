@@ -4,6 +4,7 @@ import {User} from "../models/user";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
+import {Vote} from "../models/vote";
 
 @Injectable()
 export class UserService {
@@ -18,11 +19,11 @@ export class UserService {
   }
 
   getVote(username: string, bookId: number) {
-    return this.http.get(this.url + "/vote/" + username + "/" + bookId);
+    return this.http.get<Vote>(this.url + "/vote/" + username + "/" + bookId);
   }
 
   getVotes(username: string) {
-    return this.http.get(this.url + "/user/" + username + "/votes");
+    return this.http.get<Vote[]>(this.url + "/user/" + username + "/votes");
   }
 
   getAllUsers(): Observable<User[]> {

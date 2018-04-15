@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Book} from "../../models/book";
 import {AuthorService} from "../../services/author.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Author} from "../../models/author";
 
 @Component({
   selector: 'app-author-form',
@@ -10,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class AuthorFormComponent implements OnInit {
 
-  author = {};
+  author = new Author(null,null,null);
 
   id;
 

@@ -1,0 +1,10 @@
+.sticky-top{
+  top: 60px;
+}
+
+.page-number {
+  border: none;
+  width: 40px;
+  text-align: right;
+  background: transparent;
+}

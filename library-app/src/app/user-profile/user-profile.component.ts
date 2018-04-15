@@ -4,6 +4,7 @@ import {User} from "../models/user";
 import {ActivatedRoute} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 import {FormGroup, NgForm} from "@angular/forms";
+import {Vote} from "../models/vote";
 
 @Component({
   selector: 'app-user-profile',
@@ -14,7 +15,7 @@ export class UserProfileComponent implements OnInit {
 
   user: User;
 
-  userVotes;
+  userVotes : Vote[] = [];
 
   profileForm: NgForm;
 

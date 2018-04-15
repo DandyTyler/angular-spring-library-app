@@ -17,10 +17,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +43,6 @@ public class UserController {
 
     @Autowired
     private VoteService voteService;
-
-    @Autowired
-    private UserRepository userRepository;
 
 
     @Autowired
@@ -74,9 +73,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "/current/vote", method = RequestMethod.POST)
-    public Vote saveUserVote(@RequestBody Vote vote) {
+    public Vote saveUserVote(@RequestBody Vote vote, HttpServletRequest request) {
 
-        return voteService.save(vote);
+        String token = request.getHeader(tokenHeader).substring(7);
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+
+        if (username.equals(vote.getUsername()))
+            return voteService.save(vote);
+        else
+            throw new AuthenticationException("The username does not match the current user");
     }
 
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
@@ -104,6 +109,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/user/{username}/status", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ADMIN')")
     public UserDTO disableUser(@PathVariable String username, @RequestParam(value = "setEnabled") Boolean setEnabled) {
         if (setEnabled) {
             return userService.enableUser(username);
@@ -113,8 +119,18 @@ public class UserController {
     }
 
     @ExceptionHandler({UserCreationException.class})
-    public ResponseEntity<String> handleAuthenticationException(UserCreationException e) {
+    public ResponseEntity<String> handleUserCreationException(UserCreationException e) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
+
+    @ExceptionHandler({AuthenticationException.class})
+    public ResponseEntity<String> handleAuthException(AuthenticationException e) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+    }
+
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<String> handleOtherException(Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getClass() + ": " + e.getMessage());
     }
 
 }

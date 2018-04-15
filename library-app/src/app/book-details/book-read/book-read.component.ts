@@ -10,15 +10,27 @@ import {BookService} from "../../services/book.service";
 })
 export class BookReadComponent implements OnInit {
 
-  id;
+  bookId;
 
-  book = {};
+  page: number = 1;
 
   pdfSrc: string = null;
 
-  constructor( private route: ActivatedRoute, private bookService: BookService) {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.pdfSrc ='/api/books/pdf/'+this.id;
+  constructor(private route: ActivatedRoute) {
+    this.bookId = this.route.snapshot.paramMap.get('id');
+    this.pdfSrc = '/api/books/pdf/' + this.bookId;
+  }
+
+  nextPage() {
+    this.page++;
+  }
+
+  prevPage() {
+    this.page--;
+  }
+
+ onLeft(event) {
+    this.page--;
   }
 
   ngOnInit() {

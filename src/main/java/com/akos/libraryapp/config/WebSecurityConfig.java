@@ -76,6 +76,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2/**/**").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
 
+                .antMatchers(HttpMethod.POST,"/api/books").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/books","/api/books/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/books","/api/books/**").hasRole("ADMIN")
+
+                .antMatchers(HttpMethod.POST,"/api/users/user/{username}/status").hasRole("ADMIN")
+                .antMatchers("/api/users/current/**").authenticated()
+
+                .antMatchers(HttpMethod.POST,"api/authors", "api/authors/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,"api/authors", "api/authors/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"api/authors", "api/authors/**").hasRole("ADMIN")
+
+                .antMatchers("/api/hi").permitAll()
+
                 .antMatchers("/**").permitAll()
 
                 .anyRequest().authenticated();
@@ -108,6 +121,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         HttpMethod.GET,
                         "/",
+                        "/*.jpg",
+                        "/*.png",
+                        "/**/*.jpeg",
                         "/*.html",
                         "/favicon.ico",
                         "/**/*.html",

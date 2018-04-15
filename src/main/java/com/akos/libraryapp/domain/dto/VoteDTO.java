@@ -14,14 +14,17 @@ public class VoteDTO implements Serializable{
 
     private Long value;
 
+    private String comment;
+
     public VoteDTO() {
     }
 
-    public VoteDTO(String username, Long bookId, String bookName, Long value) {
+    public VoteDTO(String username, Long bookId, String bookName, Long value, String comment) {
         this.username = username;
         this.bookId = bookId;
         this.bookName = bookName;
         this.value = value;
+        this.comment = comment;
     }
 
     public VoteDTO(Vote vote) {
@@ -33,6 +36,8 @@ public class VoteDTO implements Serializable{
         this.bookName= vote.getBook().getName();
 
         this.value = vote.getValue();
+
+        this.comment = vote.getComment();
     }
 
     public String getUsername() {
@@ -65,5 +70,13 @@ public class VoteDTO implements Serializable{
 
     public void setValue(Long value) {
         this.value = value;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

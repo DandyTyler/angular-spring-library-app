@@ -53,7 +53,8 @@
       <div class="form-group">
         <label for="imageURL">Image URL:</label>
         <input #imageURL="ngModel" [(ngModel)]="book.imageURL" name="imageURL" id="imageURL" type="text"
-               class="form-control" required url>
+               class="form-control">
+               <!--class="form-control" required url>-->
         <div class="alert alert-danger" *ngIf="imageURL.touched && imageURL.invalid">
           <div *ngIf="imageURL.errors.required"> Image URL is required.</div>
           <div *ngIf="imageURL.errors.url"> It's not a valid URL.</div>
@@ -72,7 +73,7 @@
       </div>
 
       <button class="btn btn-primary" [disabled]="!f.valid ||!fileSelected">Save</button>
-      <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+      <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Delete</button>
     </form>
   </div>
 

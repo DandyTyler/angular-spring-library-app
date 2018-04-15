@@ -1,5 +1,19 @@
-<pdf-viewer [src]="pdfSrc"
-            [render-text]="true"
-            [stick-to-page]="true"
-            style="display: block;"
-></pdf-viewer>
+<div class="sticky-top">
+    <button class="btn btn-sm" type="button" (click)="prevPage()">
+      <span class="fa fa-chevron-left"></span>
+    </button>
+    <input class="page-number"
+           type="number"
+           [(ngModel)]="page"
+           pattern="(\.[0-9]+)?"
+    >
+    <button class="btn btn-sm btn-sm" type="button" (click)="nextPage()">
+      <span class="fa fa-chevron-right"></span></button>
+  </div>
+  <pdf-viewer [src]="pdfSrc"
+              [render-text]="true"
+              [show-all]="false"
+              [(page)]="page"
+              style="display: block;"
+  ></pdf-viewer>
+

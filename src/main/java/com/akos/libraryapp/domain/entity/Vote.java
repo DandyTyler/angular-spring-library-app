@@ -34,6 +34,9 @@ public class Vote implements Serializable {
     @Column(name = "VALUE")
     private Long value;
 
+    @Column(name = "COMMENTARY", length = 140)
+    private String comment;
+
     public Vote() {
     }
 
@@ -75,6 +78,14 @@ public class Vote implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public Long getBookId() {

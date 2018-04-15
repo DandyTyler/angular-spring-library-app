@@ -107,16 +107,6 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setLastPasswordResetDate(new Date());
 
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        user.setEnabled(true);
-//        List<Authority> authorities = new ArrayList<>();
-//        authorities.add(roleRepository.findByName(AuthorityName.ROLE_USER));
-//        user.setAuthorities(authorities);
-//        user.setLastPasswordResetDate(new Date());
-
-        System.out.println(user.getId());
-
-
         return UserDTOFactory.create(userRepository.save(user));
     }
 }

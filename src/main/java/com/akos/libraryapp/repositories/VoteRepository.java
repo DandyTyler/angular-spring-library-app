@@ -13,5 +13,5 @@ public interface VoteRepository extends JpaRepository <Vote, Long> {
 
     List<Vote> findAllByBookId (Long bookId);
 
-    Vote getByUsernameAndBookId(String username, long bookId);
+    Vote getByUsernameAndBookId(String username, Long bookId);
 }

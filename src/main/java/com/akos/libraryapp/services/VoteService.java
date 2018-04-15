@@ -34,7 +34,7 @@ public class VoteService {
 
         Book book = bookService.getById(vote.getBookId());
 
-        Long newRating = 0L;
+        Double newRating = 0.0;
 
         for (Vote v : voteRepository.findAllByBookId(book.getId())) {
             newRating += v.getValue();
@@ -55,8 +55,8 @@ public class VoteService {
         return voteRepository.findAllByUsername(username);
     }
 
-    public List<Vote> getBookVotes(String username) {
-        return voteRepository.findAllByUsername(username);
+    public List<Vote> getBookVotes(Long bookId) {
+        return voteRepository.findAllByBookId(bookId);
     }
 
     public Vote getByUsernameAndBookId(String username, Long bookId) {

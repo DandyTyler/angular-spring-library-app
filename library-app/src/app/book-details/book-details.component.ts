@@ -4,6 +4,7 @@ import {BookService} from "../services/book.service";
 import {AuthService} from "../services/auth.service";
 import {UserService} from "../services/user.service";
 import {Book} from "../models/book";
+import {Vote} from "../models/vote";
 
 @Component({
   selector: 'book-details',
@@ -14,19 +15,17 @@ export class BookDetailsComponent implements OnInit {
 
   bookId;
 
-  book = {};
+  book = new Book(null,null,null,null,null,null,null);
 
-  userVoteValue = 0;
+  userVote = new Vote(null,null,null,null);
 
   voted: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, bookService: BookService, private authService: AuthService,
+  votes: Vote[] = [];
+
+  constructor(private route: ActivatedRoute, private router: Router, private bookService: BookService, private authService: AuthService,
               private userService: UserService) {
     this.bookId = this.route.snapshot.paramMap.get('id');
-
-    bookService.get(this.bookId).subscribe(book => {
-      this.book = book;
-    });
 
     if(this.authService.isAuthenticated())
       userService.getVote(this.authService.getCurrentUser().sub, this.bookId).subscribe(
@@ -34,27 +33,31 @@ export class BookDetailsComponent implements OnInit {
           if (vote.value != 0)
             this.voted = true;
 
-          this.userVoteValue = vote.value;
+          this.userVote = vote;
         }
-      )
+      );
+
+    bookService.get(this.bookId).subscribe(book => {
+      this.book = book;
+    });
+
+    bookService.getVotes(this.bookId).subscribe(votes=> this.votes = votes.reverse());
+
   }
 
   vote() {
-
     if (!this.authService.isAuthenticated()){
       this.router.navigate(['/login'],{queryParams:{returnUrl: location.pathname}});
       return;
     }
 
-    let vote = {
-      "bookId": this.bookId,
-      "username": this.authService.getCurrentUser().sub,
-      "value": this.userVoteValue
-    };
+    this.userVote.bookId =this.bookId;
+    this.userVote.username = this.authService.getCurrentUser().sub;
 
-    this.userService.voteBook(vote).subscribe((vote: any) => {
-      this.userVoteValue = vote.value;
+    this.userService.voteBook(this.userVote).subscribe((vote: any) => {
+      this.userVote = vote;
       this.voted = true;
+      this.votes.splice(0,0,vote);
     });
   }
 

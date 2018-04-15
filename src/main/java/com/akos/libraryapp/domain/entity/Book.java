@@ -61,7 +61,7 @@ public class Book implements Serializable {
 
     @Column(name = "RATING")
     @NotNull
-    private Long rating = 0L;
+    private Double rating = 0.0;
 
 
     public Book() {
@@ -135,11 +135,11 @@ public class Book implements Serializable {
         this.description = description;
     }
 
-    public Long  getRating() {
+    public Double  getRating() {
         return rating;
     }
 
-    public void setRating(Long  rating) {
+    public void setRating(Double  rating) {
         this.rating = rating;
     }
 

@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="col-4">
-      <img class="align-self-start w-100" [src]="author.photoURL"
+      <img *ngIf="author.photoURL" class="align-self-start w-100" [src]="author.photoURL"
            alt="No photo">
     </div>
     <div class="col-12">

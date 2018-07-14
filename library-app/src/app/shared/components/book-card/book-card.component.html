@@ -1,0 +1,27 @@
+<div *ngIf="book.name" class="card" style="width: 18rem;">
+  <img *ngIf="book.imageURL" class="card-img-top rounded" [src]="book.imageURL" alt="{{book.name}}">
+  <div class="card-body">
+    <h5 class="card-title">{{book.name}}
+      <span *ngIf="book.publishYear"> ({{book.publishYear}})</span>
+    </h5>
+    <p class="card-text lead" *ngFor="let a of book.authors">
+      <a *ngIf="showActions" [routerLink]="['/authors/',a.id]">{{a.fullName}}</a>
+      <span *ngIf="!showActions">{{a.fullName}}</span>
+    </p>
+    <p
+      class="card-text" *ngIf="book.genre">
+      <span
+        i18n="Book card | Genre @@bookCardGenreLabel">Genre:
+      </span>
+      {{book.genre.name}}</p>
+  </div>
+  <div class="card-footer">
+    <a
+      *ngIf="showActions" routerLink="/books/{{book.id}}" class="btn btn-primary btn-block">
+      <span
+        i18n="Book card | Details @@bookCardDetailsButton">
+        Details
+      </span>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label
+          i18n="Admin book form page | Book title  @@adminBookFormBookTitle"
+          for="name">Title:</label>
+        <input #title="ngModel" [(ngModel)]="book.name" name="name" id="name" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+          <div *ngIf="title.errors.required">Title is required.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <label
+            i18n="Admin book form page | Book authors  @@adminBookFormBookAuthors"
+            for="authors">Authors:</label>
+          <button type="button"  class="btn btn-sm btn-light new-button"  routerLink="/admin/authors/new"><span class="fa fa-plus-square"></span></button>
+        </div>
+        <ng-select
+          #author = "ngModel"
+          [(ngModel)]="book.authors"
+          name="authors"
+          id="authors"
+          [items]="authors"
+          bindLabel="fullName"
+          [multiple]="true"
+          [closeOnSelect]="false"
+          required
+        >
+        </ng-select>
+        <div class="alert alert-danger" *ngIf="author.touched && author.invalid">
+          <div
+            i18n="Admin book form page | Authors validation error @@adminBookFormAuthorValidationError"
+            *ngIf="author.errors.required">Author is required.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label
+          i18n="Admin book form page | Publication year  @@adminBookFormPublicationYear"
+          for="publishYear">Publication year:</label>
+        <input #publishYear="ngModel" [(ngModel)]="book.publishYear" name="publishYear" id="publishYear" type="text"
+               class="form-control" required [min]="1800">
+        <div class="alert alert-danger" *ngIf="publishYear.touched && publishYear.invalid">
+          <div
+            i18n="Admin book form page | Publication year required validation error @@adminBookFormPublicationYearRequiredError"
+            *ngIf="publishYear.errors.required">Publication year is required.</div>
+          <div
+            i18n="Admin book form page | Publication year error @@adminBookFormPublicationYearError"
+            *ngIf="publishYear.errors.min">Publication year should be 1800 or higher.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label
+          i18n="Admin book form page | Genre  @@adminBookFormBookGenre"
+          for="genre">Genre:</label>
+        <button type="button"  class="btn btn-sm btn-light new-button" ><span class="fa fa-plus-square"></span></button>
+        <select #genre="ngModel" [(ngModel)]="book.genre" name="genre" id="genre" class="form-control" required>
+          <option value=""></option>
+          <option *ngFor="let genre of genres" [ngValue]="genre">{{genre.name}}</option>
+        </select>
+        <div
+          i18n="Admin book form page | Genre required validation error @@adminBookFormGenreRequiredError"
+          class="alert alert-danger" *ngIf="genre.touched && genre.invalid">
+          Genre is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label
+          i18n="Admin book form page | Book cover URL  @@adminBookFormBookCoverURL"
+          for="imageURL">Cover URL:</label>
+        <input #imageURL="ngModel" [(ngModel)]="book.imageURL" name="imageURL" id="imageURL" type="text"
+               class="form-control">
+               <!--class="form-control" required url>-->
+        <div class="alert alert-danger" *ngIf="imageURL.touched && imageURL.invalid">
+          <div
+            i18n="Admin book form page | Cover URL required error @@adminBookFormCoverURLRequiredError"
+            *ngIf="imageURL.errors.required"> Image URL is required.</div>
+          <div
+            i18n="Admin book form page | Cover URL validation error @@adminBookFormCoverURLValidationError"
+            *ngIf="imageURL.errors.url"> It's not a valid URL.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+      <div class="flex">
+        <label
+          i18n="Admin book form page | Quantity  @@adminBookFormBookQuantity"
+          for="quantity">Quantity:</label>
+        <input #quantity [(ngModel)]="book.quantity" name="quantity" id="quantity" type="number" class="form-control quantity-input">
+      </div>
+      </div>
+
+      <div >
+        <label
+          i18n="Admin book form page | Content file  @@adminBookFormBookContentFile"
+          for="content">Content:</label>
+        <input #content = "ngModel" (ngModel) = "content" name="content" id="content" type="file" (change)="onFileSelected($event)" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label
+          i18n="Admin book form page | Description  @@adminBookFormBookDescription"
+          for="description">Description:</label>
+        <textarea #description [(ngModel)]="book.description" name="description" id="description" class="form-control"
+                  rows="5"></textarea>
+      </div>
+
+      <button
+        i18n="Admin book form page | Save button  @@adminBookFormSaveButton"
+        class="btn btn-primary" [disabled]="!f.valid ||!fileSelected">Save</button>
+      <button
+        i18n="Admin book form page | Delete button  @@adminBookFormDeleteButton"
+        *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <book-card [book]="book" [show-actions]="false"></book-card>
+  </div>
+</div>
+
+

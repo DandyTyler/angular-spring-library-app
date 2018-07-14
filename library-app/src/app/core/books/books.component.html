@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-2">
+    <book-filter [genreId]="genreId"></book-filter>
+  </div>
+  <div class="col-10">
+    <div class="flex">
+      <input  #query (keyup.enter)="search()" type="text" [(ngModel)]="searchString"
+             class="form-control" placeholder="Поиск...">
+      <div class="btn-group">
+        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split"
+                [attr.aria-expanded]="showSearchForm" aria-controls="searchForm" (click)="showSearchMenu()">
+        </button>
+        <button type="button" class="btn btn-primary"><span class="fa fa-search" (click)="search()" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <div class="advanced-search-form">
+      <div class="col-10" style="padding: 0px">
+        <div id="searchForm" [ngbCollapse]="!showSearchForm" style="padding-bottom: 10px">
+          <form>
+            <div class="form-group">
+              <label
+                i18n="search menu | Author name @@bookSearchAuthor"
+                for="author">Author</label>
+              <input type="text" class="form-control" id="author" name="author" placeholder="Введите имя"
+                     [(ngModel)]="authorName" >
+            </div>
+            <div>
+            <input type="text" class="form-control" id="year" name="year" placeholder="Год публикации"
+                   >
+        </div>
+            <div class="form-group">
+              <label
+                i18n="search menu | Sort by @@bookSearchSortByLabel"
+                for="category" class="text-dark">Sort by</label>
+              <select class="form-control" id="category">
+                <option>Рейтингу</option>
+                <option>All Snippets</option>
+                <option>Most Popular</option>
+                <option>Most Commented</option>
+                <option>Most Liked</option>
+              </select>
+            </div>
+
+          <div class="flex">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" checked id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Физическая копия
+              </label>
+            </div>
+            <p>  &#8194;  </p>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" checked id="defaultCheck2">
+              <label class="form-check-label" type="checkbox" for="defaultCheck2">
+                Электронная версия
+              </label>
+            </div>
+          </div>
+
+            <div class="form-group text-left">
+              <button type="button" class="btn btn-sm btn-primary">Сбросить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <ng-container *ngFor="let b of filteredBooks; let i = index">
+        <div class="col">
+          <book-card [book]="b"></book-card>
+        </div>
+        <div *ngIf="(i+1)% 2===0" class="w-100"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,60 @@
+<p>
+  <a  i18n="Admin authors page | Add new author @@AdminAuthorsPageAddAuthorButton" routerLink="/admin/authors/new" class="btn btn-primary">Add new author</a>
+</p>
+<p>
+  <input
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search...">
+</p>
+
+<data-table
+  [items]="items"
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)"
+>
+  <data-table-column
+    [property]="'fullName'"
+    [header]="'Имя'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+    <ng-template #dataTableCell let-item="item">
+      <a [routerLink]="['/authors/',item.id]">{{item.fullName}}</a>
+    </ng-template>
+  </data-table-column>
+
+  <data-table-column
+    [property]="'birthday'"
+    [header]="'Дата рождения'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+    <ng-template #dataTableCell let-item="item">
+      {{item.birthday | date : 'mediumDate'}}
+    </ng-template>
+  </data-table-column>
+
+
+  <data-table-column
+    [property]="'books'"
+    [header]="'Книги'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+    <ng-template #dataTableCell let-item="item">
+      <div *ngFor="let b of item.books">
+        {{b.name}}
+      </div>
+    </ng-template>
+  </data-table-column>
+
+  <data-table-column
+    [property]="'id'"
+  >
+    <ng-template #dataTableCell let-item="item">
+      <a i18n="Admin authors page | Edit author @@AdminAuthorsPageEditAuthorLink" [routerLink]="['/admin/authors/',item.id]">Edit</a>
+    </ng-template>
+  </data-table-column>
+
+</data-table>

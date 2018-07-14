@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div *ngIf="alertMessage" class="alert alert-danger">{{alertMessage}}</div>
+      <form class="registration-form" #userRegistrationForm="ngForm" (submit)="onSubmit(userRegistrationForm)">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label
+                i18n="Registration page | Username @@registrationUsername"
+                for="username">Username:</label>
+              <input #username="ngModel" [(ngModel)]="user.username" name="username" id="username" type="text"
+                     class="form-control" required minlength="4">
+              <div class="invalid-label" *ngIf="username.dirty && username.invalid">
+                <div
+                  i18n="Registration page | Username length error @@usernameLengthErrorMessage"
+                  *ngIf="username.errors.minlength">Minimum 4 characters.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label
+                i18n="Registration page | Password @@registrationPassword"
+                for="password">Password:</label>
+              <input #password="ngModel" [(ngModel)]="user.password" name="password" id="password" type="password"
+                     class="form-control" required minlength="4">
+              <div class="invalid-label" *ngIf="password.dirty && password.invalid">
+                <div
+                  i18n="Registration page | Password length error @@passwordLengthErrorMessage"
+                  *ngIf="password.errors.minlength">Minimum 4 characters.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label
+                i18n="Registration page | First name @@registrationFirstName"
+                for="firstName">First name:</label>
+              <input #firstName="ngModel" [(ngModel)]="user.firstName" name="firstName" id="firstName" type="text"
+                     class="form-control" required minlength="4">
+              <div class="invalid-label" *ngIf="firstName.dirty && firstName.invalid">
+                <div
+                  i18n="Registration page | First name length error @@firstNameLengthErrorMessage"
+                  *ngIf="firstName.errors.minlength">Minimum 4 characters.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label
+                i18n="Registration page | Last name @@registrationLastName"
+                for="lastName">Last name:</label>
+              <input #lastName="ngModel" [(ngModel)]="user.lastName" name="lastName" id="lastName" type="text"
+                     class="form-control" required minlength="4">
+              <div class="invalid-label" *ngIf="lastName.dirty && lastName.invalid">
+                <div
+                  i18n="Registration page | Last name length error @@lastNameLengthErrorMessage"
+                  *ngIf="lastName.errors.minlength">Minimum 4 characters.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input #email="ngModel" [(ngModel)]="user.email" name="email" id="email" type="text" class="form-control"
+                     required email="true">
+              <div class="invalid-label" *ngIf="email.dirty && email.invalid">
+                <div
+                  i18n="Registration page | Email validation error @@emailValidationErrorMessage"
+                  *ngIf="email.errors.email && email.value">It's not a valid email</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button
+              i18n="Registration page | Registration submit button @@registrationSubmitButton"
+              [disabled]="!userRegistrationForm.valid" class="btn btn-primary btn-lg btn-block" type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

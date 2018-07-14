@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h5><span  style="padding: 5px;">Order # {{order.id}}</span></h5>
+    </div>
+    <div class="col offset-3">{{order.orderDate| date : 'short'}}</div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>
+        <span  i18n="Order details | Name @@orderDetailsUserName" style="padding: 5px; color: gray">Name:</span>
+        {{user.firstName}} {{user.lastName}}
+      </p>
+      <p>
+        <span style="padding: 5px; color: gray">Email: </span>
+        {{user.email}}
+      </p>
+      <h5>
+        <span i18n="Order details | Return to @@orderDetailsReturnDate" style="padding: 5px; color: gray">Return to: </span>
+        {{order.returnDate| date : 'mediumDate'}}
+      </h5>
+    </div>
+    <div class="col">
+      <p>
+        <span i18n="Order details | Book name @@orderDetailsBookName" style="padding: 5px; color: gray">Book: </span>
+        <a style="font-size: 120%" [routerLink]="['/books/',order.bookId]">{{order.bookName}}</a>
+      </p>
+      <p>
+        <span i18n="Order details | Status @@orderDetailsOrderStatus" style="padding: 5px;color: gray">Status: </span>
+        <span *ngIf="order.accepted&&!order.returned">
+         <b i18n="Order details | On hand status @@orderDetailsOnHandStatus"> On hand</b>
+        </span>
+        <span *ngIf="!order.accepted">
+           <b i18n="Order details | Not issued status @@orderDetailsNotIssuedStatus" >Not issued</b>
+        </span>
+        <span *ngIf="order.accepted&&order.returned">
+           <b i18n="Order details | Returned status @@orderDetailsReturnedStatus">Returned</b>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>

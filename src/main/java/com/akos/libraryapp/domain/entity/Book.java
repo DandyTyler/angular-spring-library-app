@@ -63,6 +63,8 @@ public class Book implements Serializable {
     @NotNull
     private Double rating = 0.0;
 
+    @Column(name = "QUANTITY")
+    private Integer quantity;
 
     public Book() {
     }
@@ -141,6 +143,14 @@ public class Book implements Serializable {
 
     public void setRating(Double  rating) {
         this.rating = rating;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Set<Vote> getVotes() {

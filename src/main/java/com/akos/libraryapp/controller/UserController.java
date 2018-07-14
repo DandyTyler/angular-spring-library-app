@@ -2,6 +2,7 @@ package com.akos.libraryapp.controller;
 
 import com.akos.libraryapp.domain.dto.UserDTO;
 import com.akos.libraryapp.domain.dto.VoteDTO;
+import com.akos.libraryapp.domain.entity.BookOrder;
 import com.akos.libraryapp.domain.entity.Vote;
 import com.akos.libraryapp.domain.entity.security.User;
 import com.akos.libraryapp.repositories.UserRepository;
@@ -9,6 +10,7 @@ import com.akos.libraryapp.repositories.VoteRepository;
 import com.akos.libraryapp.security.AuthenticationException;
 import com.akos.libraryapp.security.JwtTokenUtil;
 import com.akos.libraryapp.security.JwtUser;
+import com.akos.libraryapp.services.BookOrderService;
 import com.akos.libraryapp.services.UserCreationException;
 import com.akos.libraryapp.services.UserService;
 import com.akos.libraryapp.services.VoteService;
@@ -48,6 +50,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private BookOrderService bookOrderService;
+
     @RequestMapping(value = "/current", method = RequestMethod.GET)
     public JwtUser getAuthenticatedUser(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader).substring(7);
@@ -82,6 +87,15 @@ public class UserController {
             return voteService.save(vote);
         else
             throw new AuthenticationException("The username does not match the current user");
+    }
+
+    @RequestMapping(value = "/order/{bookId}", method = RequestMethod.POST)
+    public BookOrder placeOrder(@PathVariable Long bookId, HttpServletRequest request) {
+
+        String token = request.getHeader(tokenHeader).substring(7);
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+
+       return bookOrderService.placeOrder(username, bookId);
     }
 
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)

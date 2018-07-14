@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="bookCardGenreLabel" datatype="html">
+        <source>Genre:
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/book-card/book-card.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description"> Genre </note>
+        <note priority="1" from="meaning">Book card </note>
+      </trans-unit>
+      <trans-unit id="bookCardDetailsButton" datatype="html">
+        <source>
+        Details
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/book-card/book-card.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description"> Details </note>
+        <note priority="1" from="meaning">Book card </note>
+      </trans-unit>
+      <trans-unit id="orderDetailsUserName" datatype="html">
+        <source>Name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description"> Name </note>
+        <note priority="1" from="meaning">Order details </note>
+      </trans-unit>
+      <trans-unit id="orderDetailsReturnDate" datatype="html">
+        <source>Return to: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description"> Return to </note>
+        <note priority="1" from="meaning">Order details </note>
+      </trans-unit>
+      <trans-unit id="orderDetailsBookName" datatype="html">
+        <source>Book: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description"> Book name </note>
+        <note priority="1" from="meaning">Order details </note>
+      </trans-unit>
+      <trans-unit id="orderDetailsOrderStatus" datatype="html">
+        <source>Status: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description"> Status </note>
+        <note priority="1" from="meaning">Order details </note>
+      </trans-unit>
+      <trans-unit id="orderDetailsOnHandStatus" datatype="html">
+        <source> On hand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description"> On hand status </note>
+        <note priority="1" from="meaning">Order details </note>
+      </trans-unit>
+      <trans-unit id="orderDetailsNotIssuedStatus" datatype="html">
+        <source>Not issued</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description"> Not issued status </note>
+        <note priority="1" from="meaning">Order details </note>
+      </trans-unit>
+      <trans-unit id="orderDetailsReturnedStatus" datatype="html">
+        <source>Returned</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description"> Returned status </note>
+        <note priority="1" from="meaning">Order details </note>
+      </trans-unit>
+      <trans-unit id="ordersListBookHeader" datatype="html">
+        <source>Book</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/orders/orders.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description"> Book header </note>
+        <note priority="1" from="meaning">Orders list </note>
+      </trans-unit>
+      <trans-unit id="ordersListStatusHeader" datatype="html">
+        <source>Status</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/orders/orders.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description"> Status header </note>
+        <note priority="1" from="meaning">Orders list </note>
+      </trans-unit>
+      <trans-unit id="ordersListOnHandStatus" datatype="html">
+        <source>
+            On hand
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/orders/orders.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description"> On hand status </note>
+        <note priority="1" from="meaning">Orders list </note>
+      </trans-unit>
+      <trans-unit id="ordersListNotIssuedStatus" datatype="html">
+        <source>
+            Not issued
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/orders/orders.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description"> Not issued status </note>
+        <note priority="1" from="meaning">Orders list </note>
+      </trans-unit>
+      <trans-unit id="ordersListReturnedStatus" datatype="html">
+        <source>
+            Returned
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/orders/orders.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description"> Returned status </note>
+        <note priority="1" from="meaning">Orders list </note>
+      </trans-unit>
+      <trans-unit id="login" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description"> Login link </note>
+        <note priority="1" from="meaning">Navigation bar </note>
+      </trans-unit>
+      <trans-unit id="MyProfile" datatype="html">
+        <source>My Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description"> MyProfile </note>
+        <note priority="1" from="meaning">Navigation bar </note>
+      </trans-unit>
+      <trans-unit id="manageBooksRef" datatype="html">
+        <source>Manage books</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description"> Manage books admin link </note>
+        <note priority="1" from="meaning">Navigation bar </note>
+      </trans-unit>
+      <trans-unit id="manageAuthorsRef" datatype="html">
+        <source>Manage authors</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description"> Manage authors admin link </note>
+        <note priority="1" from="meaning">Navigation bar </note>
+      </trans-unit>
+      <trans-unit id="manageUsersRef" datatype="html">
+        <source>Manage users</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description"> Manage users admin link </note>
+        <note priority="1" from="meaning">Navigation bar </note>
+      </trans-unit>
+      <trans-unit id="manageOrdersRef" datatype="html">
+        <source>Manage orders</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <note priority="1" from="description"> Manage orders admin link </note>
+        <note priority="1" from="meaning">Navigation bar </note>
+      </trans-unit>
+      <trans-unit id="logout" datatype="html">
+        <source>Log Out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description"> Logout link </note>
+        <note priority="1" from="meaning">Navigation bar </note>
+      </trans-unit>
+      <trans-unit id="bookSearchAuthor" datatype="html">
+        <source>Author</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/books/books.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description"> Author name </note>
+        <note priority="1" from="meaning">search menu </note>
+      </trans-unit>
+      <trans-unit id="bookSearchSortByLabel" datatype="html">
+        <source>Sort by</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/books/books.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <note priority="1" from="description"> Sort by </note>
+        <note priority="1" from="meaning">search menu </note>
+      </trans-unit>
+      <trans-unit id="loginForm" datatype="html">
+        <source>Please sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/login/login.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description"> Login form header </note>
+        <note priority="1" from="meaning">Login page </note>
+      </trans-unit>
+      <trans-unit id="invalidCredentials" datatype="html">
+        <source>Invalid username and/or password.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/login/login.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description"> Invalid credentials message </note>
+        <note priority="1" from="meaning">Login page </note>
+      </trans-unit>
+      <trans-unit id="username" datatype="html">
+        <source>Username</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/login/login.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description"> Username </note>
+        <note priority="1" from="meaning">Login page </note>
+      </trans-unit>
+      <trans-unit id="password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/login/login.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description"> Password label </note>
+        <note priority="1" from="meaning">Login page </note>
+      </trans-unit>
+      <trans-unit id="SignInButton" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/login/login.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description"> SignIn button </note>
+        <note priority="1" from="meaning">Login page </note>
+      </trans-unit>
+      <trans-unit id="registrationLabel" datatype="html">
+        <source>Create new account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/login/login.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description"> Registration label </note>
+        <note priority="1" from="meaning">Login page </note>
+      </trans-unit>
+      <trans-unit id="allGenresLabel" datatype="html">
+        <source>
+      All Genres
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/books/book-filter/book-filter.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description"> All genres </note>
+        <note priority="1" from="meaning">Book filter </note>
+      </trans-unit>
+      <trans-unit id="AuthorPageBiographyLabel" datatype="html">
+        <source>
+              Biography:
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/author-details/author-details.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description"> Biography </note>
+        <note priority="1" from="meaning">Author page </note>
+      </trans-unit>
+      <trans-unit id="AuthorPageBooksLabel" datatype="html">
+        <source>Books: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/author-details/author-details.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description"> Books </note>
+        <note priority="1" from="meaning">Author page </note>
+      </trans-unit>
+      <trans-unit id="bookPageGenre" datatype="html">
+        <source>
+            Genre:
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/book-details/book-details.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description"> Genre </note>
+        <note priority="1" from="meaning">Book page </note>
+      </trans-unit>
+      <trans-unit id="bookPageRating" datatype="html">
+        <source>
+            Users rating:
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/book-details/book-details.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description"> Users rating </note>
+        <note priority="1" from="meaning">Book page </note>
+      </trans-unit>
+      <trans-unit id="bookPageReadButton" datatype="html">
+        <source>Read
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/book-details/book-details.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <note priority="1" from="description"> Read button </note>
+        <note priority="1" from="meaning">Book page </note>
+      </trans-unit>
+      <trans-unit id="bookPageBorrowButton" datatype="html">
+        <source>Borrow this book
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/book-details/book-details.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <note priority="1" from="description"> Borrow button </note>
+        <note priority="1" from="meaning">Book page </note>
+      </trans-unit>
+      <trans-unit id="bookPageBorrowLabel" datatype="html">
+        <source>
+           You borrowed this book
+         </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/book-details/book-details.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <note priority="1" from="description"> Borrow label </note>
+        <note priority="1" from="meaning">Book page </note>
+      </trans-unit>
+      <trans-unit id="bookPageCancelOrderButton" datatype="html">
+        <source>Cancel
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/book-details/book-details.component.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <note priority="1" from="description"> Cancel order </note>
+        <note priority="1" from="meaning">Book page </note>
+      </trans-unit>
+      <trans-unit id="bookPageDescriptionLabel" datatype="html">
+        <source>
+           Description:
+         </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/book-details/book-details.component.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+        <note priority="1" from="description"> Description </note>
+        <note priority="1" from="meaning">Book page </note>
+      </trans-unit>
+      <trans-unit id="bookPageUsersVotesLabel" datatype="html">
+        <source> Users votes:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/book-details/book-details.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+        <note priority="1" from="description"> Users votes </note>
+        <note priority="1" from="meaning">Book page </note>
+      </trans-unit>
+      <trans-unit id="userProfileFirstNameLabel" datatype="html">
+        <source>First Name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/user-profile/user-profile.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <note priority="1" from="description"> First name </note>
+        <note priority="1" from="meaning">User profile </note>
+      </trans-unit>
+      <trans-unit id="userProfileLastNameLabel" datatype="html">
+        <source>Last Name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/user-profile/user-profile.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description"> Last name </note>
+        <note priority="1" from="meaning">User profile </note>
+      </trans-unit>
+      <trans-unit id="userProfileEditButton" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/user-profile/user-profile.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <note priority="1" from="description"> Edit button </note>
+        <note priority="1" from="meaning">User profile </note>
+      </trans-unit>
+      <trans-unit id="userProfileSaveButton" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/user-profile/user-profile.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <note priority="1" from="description"> Save button </note>
+        <note priority="1" from="meaning">User profile </note>
+      </trans-unit>
+      <trans-unit id="userProfileCancelButton" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/user-profile/user-profile.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <note priority="1" from="description"> Cancel button </note>
+        <note priority="1" from="meaning">User profile </note>
+      </trans-unit>
+      <trans-unit id="userProfileVoteBookTitle" datatype="html">
+        <source>Title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/user-profile/user-profile.component.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+        <note priority="1" from="description"> Book title </note>
+        <note priority="1" from="meaning">User profile </note>
+      </trans-unit>
+      <trans-unit id="userProfileVoteValueTitle" datatype="html">
+        <source>My vote</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/user-profile/user-profile.component.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+        <note priority="1" from="description"> My vote </note>
+        <note priority="1" from="meaning">User profile </note>
+      </trans-unit>
+      <trans-unit id="userProfileVoteComment" datatype="html">
+        <source>Comment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/user-profile/user-profile.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <note priority="1" from="description"> My comment </note>
+        <note priority="1" from="meaning">User profile </note>
+      </trans-unit>
+      <trans-unit id="registrationUsername" datatype="html">
+        <source>Username:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description"> Username </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="usernameLengthErrorMessage" datatype="html">
+        <source>Minimum 4 characters.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description"> Username length error </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="registrationPassword" datatype="html">
+        <source>Password:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description"> Password </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="passwordLengthErrorMessage" datatype="html">
+        <source>Minimum 4 characters.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description"> Password length error </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="registrationFirstName" datatype="html">
+        <source>First name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description"> First name </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="firstNameLengthErrorMessage" datatype="html">
+        <source>Minimum 4 characters.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+        <note priority="1" from="description"> First name length error </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="registrationLastName" datatype="html">
+        <source>Last name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <note priority="1" from="description"> Last name </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="lastNameLengthErrorMessage" datatype="html">
+        <source>Minimum 4 characters.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+        <note priority="1" from="description"> Last name length error </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="emailValidationErrorMessage" datatype="html">
+        <source>It&apos;s not a valid email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+        <note priority="1" from="description"> Email validation error </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="registrationSubmitButton" datatype="html">
+        <source>
+              Submit
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/membership/registration/registration.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <note priority="1" from="description"> Registration submit button </note>
+        <note priority="1" from="meaning">Registration page </note>
+      </trans-unit>
+      <trans-unit id="AdminBooksPageAddNewBookButton" datatype="html">
+        <source>New book</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-books/admin-books.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description"> Add new book </note>
+        <note priority="1" from="meaning">Admin books page </note>
+      </trans-unit>
+      <trans-unit id="AdminBooksPageEditBookLink" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-books/admin-books.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+        <note priority="1" from="description"> Edit book </note>
+        <note priority="1" from="meaning">Admin books page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormBookTitle" datatype="html">
+        <source>Title:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description"> Book title  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormBookAuthors" datatype="html">
+        <source>Authors:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description"> Book authors  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormAuthorValidationError" datatype="html">
+        <source>Author is required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <note priority="1" from="description"> Authors validation error </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormPublicationYear" datatype="html">
+        <source>Publication year:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description"> Publication year  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormPublicationYearRequiredError" datatype="html">
+        <source>Publication year is required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <note priority="1" from="description"> Publication year required validation error </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormPublicationYearError" datatype="html">
+        <source>Publication year should be 1800 or higher.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <note priority="1" from="description"> Publication year error </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormBookGenre" datatype="html">
+        <source>Genre:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <note priority="1" from="description"> Genre  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormGenreRequiredError" datatype="html">
+        <source>
+          Genre is required.
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <note priority="1" from="description"> Genre required validation error </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormBookCoverURL" datatype="html">
+        <source>Cover URL:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+        <note priority="1" from="description"> Book cover URL  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormCoverURLRequiredError" datatype="html">
+        <source> Image URL is required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+        <note priority="1" from="description"> Cover URL required error </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormCoverURLValidationError" datatype="html">
+        <source> It&apos;s not a valid URL.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <note priority="1" from="description"> Cover URL validation error </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormBookQuantity" datatype="html">
+        <source>Quantity:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+        <note priority="1" from="description"> Quantity  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormBookContentFile" datatype="html">
+        <source>Content:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+        <note priority="1" from="description"> Content file  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormBookDescription" datatype="html">
+        <source>Description:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <note priority="1" from="description"> Description  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormSaveButton" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+        <note priority="1" from="description"> Save button  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminBookFormDeleteButton" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/book-form/book-form.component.ts</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+        <note priority="1" from="description"> Delete button  </note>
+        <note priority="1" from="meaning">Admin book form page </note>
+      </trans-unit>
+      <trans-unit id="adminAuthorFormAuthorName" datatype="html">
+        <source>Name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/author-form/author-form.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description"> Author name  </note>
+        <note priority="1" from="meaning">Admin author form page </note>
+      </trans-unit>
+      <trans-unit id="adminAuthorFormNameValidationError" datatype="html">
+        <source>
+      Name is required.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/author-form/author-form.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description"> Name validation error </note>
+        <note priority="1" from="meaning">Admin author form page </note>
+      </trans-unit>
+      <trans-unit id="adminAuthorFormPhotoUrl" datatype="html">
+        <source>Photo URL:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/author-form/author-form.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description"> Photo URL  </note>
+        <note priority="1" from="meaning">Admin author form page </note>
+      </trans-unit>
+      <trans-unit id="adminAuthorFormPhotoUrlValidationError" datatype="html">
+        <source> It&apos;s not a valid URL.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/author-form/author-form.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description"> Photo URL validation error </note>
+        <note priority="1" from="meaning">Admin author form page </note>
+      </trans-unit>
+      <trans-unit id="adminAuthorFormAuthorBiography" datatype="html">
+        <source>Biography:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/author-form/author-form.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description"> Author biography  </note>
+        <note priority="1" from="meaning">Admin author form page </note>
+      </trans-unit>
+      <trans-unit id="adminAuthorFormSaveButton" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/author-form/author-form.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <note priority="1" from="description"> Save button  </note>
+        <note priority="1" from="meaning">Admin author form page </note>
+      </trans-unit>
+      <trans-unit id="adminAuthorFormDeleteButton" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/author-form/author-form.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <note priority="1" from="description"> Delete button  </note>
+        <note priority="1" from="meaning">Admin author form page </note>
+      </trans-unit>
+      <trans-unit id="AdminAuthorsPageAddAuthorButton" datatype="html">
+        <source>Add new author</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-authors/admin-authors.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description"> Add new author </note>
+        <note priority="1" from="meaning">Admin authors page </note>
+      </trans-unit>
+      <trans-unit id="AdminAuthorsPageEditAuthorLink" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-authors/admin-authors.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <note priority="1" from="description"> Edit author </note>
+        <note priority="1" from="meaning">Admin authors page </note>
+      </trans-unit>
+      <trans-unit id="AdminOrdersPageOnHandOrderStatus" datatype="html">
+        <source>
+          On hand
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-orders/admin-orders.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <note priority="1" from="description"> On hand order status </note>
+        <note priority="1" from="meaning">Admin orders page </note>
+      </trans-unit>
+      <trans-unit id="AdminOrdersPageNotIssuedOrderStatus" datatype="html">
+        <source>
+          Not issued
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-orders/admin-orders.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+        <note priority="1" from="description"> Not issued order status </note>
+        <note priority="1" from="meaning">Admin orders page </note>
+      </trans-unit>
+      <trans-unit id="AdminOrdersPageReturnedOrderStatus" datatype="html">
+        <source>
+          Returned
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-orders/admin-orders.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <note priority="1" from="description"> Returned order status </note>
+        <note priority="1" from="meaning">Admin orders page </note>
+      </trans-unit>
+      <trans-unit id="AdminOrdersPageCloseOrderButton" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-orders/admin-orders.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <note priority="1" from="description"> Close order button </note>
+        <note priority="1" from="meaning">Admin orders page </note>
+      </trans-unit>
+      <trans-unit id="AdminOrdersPageAcceptOrderButton" datatype="html">
+        <source>Accept</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/admin/components/admin-orders/admin-orders.component.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <note priority="1" from="description"> Accept order button </note>
+        <note priority="1" from="meaning">Admin orders page </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

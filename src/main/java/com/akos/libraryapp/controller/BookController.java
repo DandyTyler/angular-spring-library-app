@@ -6,6 +6,8 @@ import com.akos.libraryapp.domain.entity.Vote;
 import com.akos.libraryapp.services.BookService;
 import com.akos.libraryapp.services.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +30,18 @@ public class BookController {
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public List<BookDTO> getAllBooks() {
         return bookService.getAll();
+    }
+
+    @RequestMapping(value = "/page",method = RequestMethod.GET, produces = "application/json")
+    public Page<Book> getBookWithPage(Pageable pageRequest) {
+        return bookService.getAllBooks(pageRequest);
+    }
+
+    @RequestMapping(value = "/search",method = RequestMethod.GET, produces = "application/json")
+    public Page<Book> getBookWithPage(@RequestParam(value = "searchString", required = false) String nameSearchTerm,
+                                      @RequestParam(value = "genre", required = false) Long genreId,
+                                      Pageable pageRequest) {
+        return bookService.findByNameAndGenre(nameSearchTerm, genreId==0?null : genreId, pageRequest);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

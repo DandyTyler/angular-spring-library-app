@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <img *ngIf="book.imageURL" class="align-self-start w-100" [src]="book.imageURL"
+           alt="No photo">
+    </div>
+    <div class="col-8">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{book.name}}
+          <span *ngIf="book.publishYear"> ({{book.publishYear}})</span>
+        </h5>
+        <hr>
+        <p
+          class="card-text lead" *ngFor="let a of book.authors">
+          <a [routerLink]="['/authors/',a.id]">{{a.fullName}}</a>
+        </p>
+        <p
+          class="card-text" *ngIf="book.genre">
+          <span
+            i18n="Book page | Genre @@bookPageGenre">
+            Genre:
+          </span>
+          {{book.genre.name}}<br>
+          <span
+            i18n="Book page | Users rating @@bookPageRating">
+            Users rating:
+          </span>
+          {{book.rating | number:'1.1-1'}}<br>
+          <span>
+            <ngb-rating
+              [(rate)]="userVote.value"
+              min="1"
+              max="5"
+              [readonly]="voted">
+              <ng-template let-fill="fill" let-index="index">
+                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+             </ng-template>
+          </ngb-rating>
+            <div *ngIf="userVote.value!==0&&!voted">
+              <input
+                [(ngModel)]="userVote.comment" maxlength="140"
+                type="text" class="form-control">
+            </div>
+            <br>
+          <button
+            [disabled]="voted||userVote.value===0"
+            class="btn btn-sm" (click)="vote()">
+            <span class="fa fa-check"></span>
+          </button>
+          </span>
+          <button
+            i18n="Book page | Read button @@bookPageReadButton"
+            routerLink="/books/{{book.id}}/read"
+            class="btn btn-sm btn-sm btn-primary"
+            type="button">Read
+          </button>
+        </p>
+        <button
+          i18n="Book page | Borrow button @@bookPageBorrowButton"
+          *ngIf="!orderId"
+          (click)="borrow()"
+          class="btn btn-sm btn-sm"
+          type="button">Borrow this book
+        </button>
+        <span
+          *ngIf="orderId" class="borrowed-lable">
+         <span
+           i18n="Book page | Borrow label @@bookPageBorrowLabel">
+           You borrowed this book
+         </span>
+          <button
+            i18n="Book page | Cancel order @@bookPageCancelOrderButton"
+            (click)="cancelOrder()"
+            class="btn btn-sm btn-sm"
+            type="button">Cancel
+        </button>
+       </span>
+        <p
+          class="card-text">
+         <span style="font-size: 120%"
+           i18n="Book page | Description @@bookPageDescriptionLabel">
+           Description:
+         </span> <br>
+          {{book.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <br>
+      <h4  i18n="Book page | Users votes @@bookPageUsersVotesLabel"> Users votes:</h4>
+      <ul class="list-group">
+        <li
+          *ngFor="let vote of votes" class="list-group-item">
+          <h5 class="mb-1"><a [routerLink]="['/user/',vote.username]">{{vote.username}}</a></h5>
+
+          <div class="comment-rating">
+            <ngb-rating
+              [(rate)]="vote.value"
+              [readonly]="true" max="5">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+          </div>
+          <div class="bot-border"></div>
+
+          {{vote.comment}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

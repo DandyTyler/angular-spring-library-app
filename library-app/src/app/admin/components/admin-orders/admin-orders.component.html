@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-2">
+    <input #query1
+           (keyup.enter)="filterId(query1.value)"
+           type="text" class="form-control" placeholder="ID">
+  </div>
+  <div class="col-2">
+    <input #query2
+           (keyup.enter)="filterUsername(query2.value)"
+           type="text" class="form-control" placeholder="username">
+  </div>
+</div>
+
+<div>
+  <data-table
+    id="ordersTable"
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+
+    [expandableRows]="true"
+
+    [indexColumnHeader]="'#'"
+  >
+    <ng-template #dataTableExpand let-item="item">
+      <order-details [order]="item"></order-details>
+</ng-template>
+    <data-table-column
+      [property]="'id'"
+      [header]="'ID'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+      <ng-template #dataTableCell let-item="item">
+        <a [routerLink]="['/order/',item.id]">{{item.id}}</a>
+      </ng-template>
+    </data-table-column>
+
+    <data-table-column
+      [property]="'username'"
+      [header]="'Имя пользователя'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+      [property]="'bookName'"
+      [header]="'Книга'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+      [property]="'accepted'"
+      [header]="'Статус'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+      <ng-template #dataTableCell let-item="item">
+        <div   i18n="Admin orders page | On hand order status @@AdminOrdersPageOnHandOrderStatus" *ngIf="item.accepted&&!item.returned">
+          On hand
+        </div>
+        <div i18n="Admin orders page | Not issued order status @@AdminOrdersPageNotIssuedOrderStatus" *ngIf="!item.accepted">
+          Not issued
+        </div>
+        <div i18n="Admin orders page | Returned order status @@AdminOrdersPageReturnedOrderStatus"  *ngIf="item.accepted&&item.returned">
+          Returned
+        </div>
+      </ng-template>
+    </data-table-column>
+
+    <data-table-column
+      [resizable]="true"
+    >
+      <ng-template #dataTableCell let-item="item">
+        <div *ngIf="item.accepted&&!item.returned">
+          <button
+            i18n="Admin orders page | Close order button @@AdminOrdersPageCloseOrderButton"
+            class="btn btn-sm btn-primary" type="button" (click)="closeOrder(item)">Close</button>
+        </div>
+        <div *ngIf="!item.accepted">
+          <button
+            i18n="Admin orders page | Accept order button @@AdminOrdersPageAcceptOrderButton"
+            class="btn btn-sm btn-primary" type="button" (click)="acceptOrder(item)">Accept</button>
+          <button class="btn btn-sm btn-danger" type="button" (click)="deleteOrder(item)">X</button>
+        </div>
+      </ng-template>
+    </data-table-column>
+
+    <data-table-column
+      [header]="'Дата возврата'"
+      [sortable]="true"
+      [resizable]="true"
+    >
+      <ng-template #dataTableCell let-item="item">
+        {{item.returnDate | date : 'mediumDate'}}
+      </ng-template>
+    </data-table-column>
+  </data-table>
+</div>

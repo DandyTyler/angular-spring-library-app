@@ -1,0 +1,18 @@
+.bot-border{
+  border-bottom:2px #f8f8f8 solid;  margin:5px 0  5px 0
+}
+
+.comment-rating {
+  float:right;
+  position:absolute;
+  top:1%;
+  right: 3%;
+}
+
+.borrowed-lable {
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-left:0.25rem ;
+  font-size: 90%;
+  color: #53c04e;
+}

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <a class="navbar-brand" routerLink="/">Library</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/books">Books</a>
+      </li>
+      <li class="nav-item" *ngIf="!authService.isAuthenticated()">
+        <a i18n="Navigation bar | Login link @@login" class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li ngbDropdown class="nav-item dropdown" *ngIf="authService.isAuthenticated()">
+        <a
+          ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">{{authService.getCurrentUser().sub}}
+        </a>
+
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a i18n="Navigation bar | MyProfile @@MyProfile" class="dropdown-item" [routerLink]="['/user/', authService.getCurrentUser().sub]">My Profile</a>
+          <a i18n="Navigation bar | Manage books admin link @@manageBooksRef" class="dropdown-item" routerLink="/admin/books" *ngIf="authService.getCurrentUser().isAdmin">Manage books</a>
+          <a i18n="Navigation bar | Manage authors admin link @@manageAuthorsRef" class="dropdown-item" routerLink="/admin/authors" *ngIf="authService.getCurrentUser().isAdmin">Manage authors</a>
+          <a i18n="Navigation bar | Manage users admin link @@manageUsersRef" class="dropdown-item" routerLink="/admin/users" *ngIf="authService.getCurrentUser().isAdmin">Manage users</a>
+          <a i18n="Navigation bar | Manage orders admin link @@manageOrdersRef" class="dropdown-item" routerLink="/admin/orders" *ngIf="authService.getCurrentUser().isAdmin">Manage orders</a>
+          <a i18n="Navigation bar | Logout link @@logout" class="dropdown-item"  (click)="logout()">Log Out</a>
+        </div>
+      </li>
+    </ul>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-sm btn-secondary active">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked> RUS
+      </label>
+      <label class="btn btn-sm btn-secondary">
+        <input type="radio" name="options" id="option2" autocomplete="off"> ENG
+      </label>
+    </div>
+  </div>
+</nav>

@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
+    "start-ru": "ng serve --aot --i18nFile=src/locale/messages.ru.xlf --locale=ru --proxy-config proxy.conf.json",
+    "locale": "ng xi18n --output-path=src/locale",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",

@@ -1,0 +1,54 @@
+<form  #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="form-group">
+    <label i18n="Admin author form page | Author name  @@adminAuthorFormAuthorName" for="fullName">Name:</label>
+    <input  #fullName="ngModel" [(ngModel)]="author.fullName" name="fullName" id="fullName" type="text"
+           class="form-control" required>
+    <div
+      i18n="Admin author form page | Name validation error @@adminAuthorFormNameValidationError"
+         class="alert alert-danger" *ngIf="fullName.touched && fullName.invalid">
+      Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             name="birthdate" [(ngModel)]="author.birthdate" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+          <span class="fa fa-calendar" style="width: 1.2rem; height: 1rem; cursor: pointer;"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label
+      i18n="Admin author form page | Photo URL  @@adminAuthorFormPhotoUrl"
+      for="photoURL">Photo URL:</label>
+    <input #photoURL="ngModel" [(ngModel)]="author.photoURL" name="photoURL" id="photoURL" type="text"
+           class="form-control" url>
+    <div class="alert alert-danger" *ngIf="photoURL.touched && photoURL.invalid">
+      <div
+        i18n="Admin author form page | Photo URL validation error @@adminAuthorFormPhotoUrlValidationError"
+        *ngIf="photoURL.errors?.url"> It's not a valid URL.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label
+      i18n="Admin author form page | Author biography  @@adminAuthorFormAuthorBiography"
+      for="biography">Biography:</label>
+    <textarea #biography [(ngModel)]="author.biography" name="biography" id="biography" class="form-control"
+              rows="5"></textarea>
+  </div>
+
+  <button
+    i18n="Admin author form page | Save button  @@adminAuthorFormSaveButton"
+    class="btn btn-primary" [disabled]="!f.valid">Save</button>
+  <button
+    i18n="Admin author form page | Delete button  @@adminAuthorFormDeleteButton"
+    type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+</form>
+
+

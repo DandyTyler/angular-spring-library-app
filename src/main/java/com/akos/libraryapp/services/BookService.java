@@ -10,6 +10,9 @@ import com.akos.libraryapp.repositories.AuthorRepository;
 import com.akos.libraryapp.repositories.BookRepository;
 import com.akos.libraryapp.repositories.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,6 +24,8 @@ import java.util.Set;
 
 @Service
 public class BookService {
+
+    private static final int PAGE_SIZE = 10;
 
     private BookRepository bookRepository;
 
@@ -34,11 +39,29 @@ public class BookService {
         this.genreRepository = genreRepository;
         this.authorRepository = authorRepository;
     }
-
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public Page<Book> getAllBooks(Pageable pageRequest) {
+        return bookRepository.findAll(pageRequest);
     }
 
+    public Page<Book> findByNameAndGenre(String nameSearchTerm, Long genreId, Pageable pageRequest){
+
+        if(genreId!=null&&nameSearchTerm!=null){
+            return bookRepository.findAllByNameIgnoreCaseContainsAndGenre_Id(nameSearchTerm, genreId, pageRequest);
+        }
+
+        if(genreId==null&&nameSearchTerm!=null){
+            return bookRepository.findAllByNameIgnoreCaseContains(nameSearchTerm, pageRequest);
+        }
+
+        if(genreId!=null){
+            return bookRepository.findAllByGenre_Id(genreId, pageRequest);
+        }
+
+        return bookRepository.findAll(pageRequest);
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public Book getBookByName(String bookName) {
         return bookRepository.findByName(bookName);
     }
@@ -69,6 +92,8 @@ public class BookService {
 
         newBook.setDescription(bookDTO.getDescription());
 
+        newBook.setQuantity(bookDTO.getQuantity());
+
         for (AuthorDTO authorDTO: bookDTO.getAuthors()) {
 
             Author author = authorRepository.getOne(authorDTO.getId());
@@ -94,6 +119,8 @@ public class BookService {
         newBook.setImageURL(bookDTO.getImageURL());
 
         newBook.setDescription(bookDTO.getDescription());
+
+        newBook.setQuantity(bookDTO.getQuantity());
 
         try {
             newBook.setContent(content.getBytes());
@@ -126,6 +153,7 @@ public class BookService {
             bookDTO.setImageURL(book.getImageURL());
             bookDTO.setDescription(book.getDescription());
             bookDTO.setRating(book.getRating());
+            bookDTO.setQuantity(book.getQuantity());
 
             GenreDTO genreDTO = new GenreDTO();
             genreDTO.setId(book.getGenre().getId());
@@ -164,6 +192,8 @@ public class BookService {
         updatedBook.setDescription(bookDTO.getDescription());
 
         updatedBook.setImageURL(bookDTO.getImageURL());
+
+        updatedBook.setQuantity(bookDTO.getQuantity());
 
         Set<Author> updatedAuthors = new HashSet<>();
 

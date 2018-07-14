@@ -1,0 +1,55 @@
+<div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col" i18n="Orders list | Book header @@ordersListBookHeader">Book</th>
+        <th i18n="Orders list | Status header @@ordersListStatusHeader">Status</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let o of userOrders">
+      <tr>
+        <td><p>{{o.id}}</p></td>
+        <td><p>{{o.bookName}}</p></td>
+        <td>
+          <div i18n="Orders list | On hand status @@ordersListOnHandStatus" *ngIf="o.accepted&&!o.returned">
+            On hand
+          </div>
+          <div i18n="Orders list | Not issued status @@ordersListNotIssuedStatus" *ngIf="!o.accepted">
+            Not issued
+          </div>
+          <div i18n="Orders list | Returned status @@ordersListReturnedStatus" *ngIf="o.accepted&&o.returned">
+            Returned
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-sm" (click)="open(content)">
+            <span class="fa fa-caret-square-o-down "></span>
+          </button>
+          <button *ngIf="!o.accepted" (click)="deleteOrder(o)"
+                  class="btn btn-sm">
+            <span class="fa fa-trash-o "></span>
+          </button>
+        </td>
+      </tr>
+      <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <order-details [order]="o"></order-details>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ok</button>
+        </div>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <ngb-pagination  [collectionSize]="size" [(page)]="page" (pageChange)="loadPage()"></ngb-pagination>
+</div>

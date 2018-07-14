@@ -1,11 +1,14 @@
 package com.akos.libraryapp.controller;
 
+import com.akos.libraryapp.domain.dto.BookDTO;
 import com.akos.libraryapp.domain.entity.Author;
 import com.akos.libraryapp.domain.entity.Book;
+import com.akos.libraryapp.domain.entity.BookOrder;
 import com.akos.libraryapp.domain.entity.Genre;
 import com.akos.libraryapp.domain.entity.security.Authority;
 import com.akos.libraryapp.domain.entity.security.AuthorityName;
 import com.akos.libraryapp.domain.entity.security.User;
+import com.akos.libraryapp.repositories.BookOrderRepository;
 import com.akos.libraryapp.repositories.UserRepository;
 import com.akos.libraryapp.services.BookService;
 import org.slf4j.Logger;
@@ -30,10 +33,13 @@ public class WebRestController {
 
     private UserRepository userRepository;
 
+    private BookOrderRepository bookOrderRepository;
+
     @Autowired
-    public WebRestController(BookService bookService, UserRepository userRepository) {
+    public WebRestController(BookService bookService, UserRepository userRepository, BookOrderRepository bookOrderRepository) {
         this.bookService = bookService;
         this.userRepository = userRepository;
+        this.bookOrderRepository = bookOrderRepository;
     }
 
     @RequestMapping("/api/hi")
@@ -145,6 +151,7 @@ public class WebRestController {
         book1.getAuthors().add(steev);
         book1.setGenre(horror);
         book1.setPublishYear(1986);
+        book1.setQuantity(1);
         book1.setImageURL("http://localhost:8080/It.png");
         book1.setDescription("It is a 1986 horror novel by American author Stephen King. It was his 22nd book, and his " +
                 "18th novel written under his own name. The story follows the experiences of seven children as they are" +
@@ -180,6 +187,7 @@ public class WebRestController {
         book2.getAuthors().add(steev);
         book2.setGenre(horror);
         book2.setPublishYear(1977);
+        book2.setQuantity(3);
         book2.setImageURL("http://localhost:8080/Shining.jpg");
         book2.setDescription("The Shining is a horror novel by American author Stephen King. Published in 1977, " +
                 "it is King's third published novel and first hardback bestseller: the success of the book firmly" +
@@ -215,6 +223,7 @@ public class WebRestController {
         book3.getAuthors().add(robert);
         book3.setGenre(fantasy);
         book3.setPublishYear(1988);
+        book3.setQuantity(1);
         book3.setImageURL("http://localhost:8080/Salvatore1.jpg");
 
         try {
@@ -231,6 +240,7 @@ public class WebRestController {
         book4.getAuthors().add(robert);
         book4.setGenre(fantasy);
         book4.setPublishYear(2001);
+        book4.setQuantity(0);
         book4.setImageURL("http://localhost:8080/Sea_of_Swords.jpg");
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -238,6 +248,7 @@ public class WebRestController {
         book5.getAuthors().add(howard);
         book5.setGenre(fantasy);
         book5.setPublishYear(1943);
+        book5.setQuantity(2);
         book5.setImageURL("http://localhost:8080/The-Dream-Quest-of-Unknown-Kadath.jpg");
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -245,6 +256,7 @@ public class WebRestController {
         book6.getAuthors().add(frank);
         book6.setGenre(sciFi);
         book6.setPublishYear(1963);
+        book6.setQuantity(10);
         book6.setImageURL("http://localhost:8080/Dune.jpg");
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -258,8 +270,12 @@ public class WebRestController {
         book8.getAuthors().add(doug);
         book8.setGenre(comedy);
         book8.setPublishYear(1979);
+        book8.setQuantity(0);
         book8.setImageURL("http://localhost:8080/The_Hitchhiker's_Guide_to_the_Galaxy.jpg");
 
+        for (BookOrder bo: bookOrderRepository.findAll()) {
+            System.out.println(bo.getUsername());
+        }
 
         bookService.save(book1);
         bookService.save(book2);
@@ -272,7 +288,7 @@ public class WebRestController {
 
         log.info("All books:");
         log.info("-------------------------------");
-        for (Book book : bookService.getAllBooks()) {
+        for (BookDTO book : bookService.getAll()) {
             log.info(book.toString());
         }
         log.info("");

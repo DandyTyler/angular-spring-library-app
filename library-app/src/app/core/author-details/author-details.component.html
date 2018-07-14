@@ -1,0 +1,33 @@
+<div class="container container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <div class="media">
+        <div class="media-body">
+          <h5 class="mt-0 mb-1"><b>{{author.fullName}}</b></h5>
+          <h6 class="mt-0 mb-1">{{author.birthday | date : 'mediumDate'}}</h6>
+          <p></p>
+          <div *ngIf="author.biography">
+            <span  i18n="Author page | Biography @@AuthorPageBiographyLabel">
+              Biography:
+            </span>
+            <p> {{author.biography}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <img *ngIf="author.photoURL" class="align-self-start w-100" [src]="author.photoURL"
+           alt="No photo">
+    </div>
+    <div class="col-12">
+      <h5 i18n="Author page | Books @@AuthorPageBooksLabel">Books: </h5>
+      <p></p>
+    </div>
+    <ng-container *ngFor="let b of author.books; let i = index">
+      <div class="col">
+        <book-card [book]="b"></book-card>
+        <div *ngIf="(i+1)% 3===0" class="w-100"></div>
+      </div>
+    </ng-container>
+  </div>
+</div>
